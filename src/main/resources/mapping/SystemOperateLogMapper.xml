@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.trc.model.SystemOperateLog">
+  <resultMap id="BaseResultMap" type="com.trc.model.SystemOperateLog">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="operate_module" jdbcType="VARCHAR" property="operateModule" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="operator" jdbcType="VARCHAR" property="operator" />
+    <result column="operate_time" jdbcType="DATE" property="operateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, operate_module, description, operator, operate_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from system_operate_log
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from system_operate_log
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.trc.model.SystemOperateLog">
+    insert into system_operate_log (id, operate_module, description, 
+      operator, operate_time)
+    values (#{id,jdbcType=BIGINT}, #{operateModule,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
+      #{operator,jdbcType=VARCHAR}, #{operateTime,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.trc.model.SystemOperateLog">
+    insert into system_operate_log
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="operateModule != null">
+        operate_module,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="operator != null">
+        operator,
+      </if>
+      <if test="operateTime != null">
+        operate_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="operateModule != null">
+        #{operateModule,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="operator != null">
+        #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="operateTime != null">
+        #{operateTime,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.trc.model.SystemOperateLog">
+    update system_operate_log
+    <set>
+      <if test="operateModule != null">
+        operate_module = #{operateModule,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="operator != null">
+        operator = #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="operateTime != null">
+        operate_time = #{operateTime,jdbcType=DATE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.trc.model.SystemOperateLog">
+    update system_operate_log
+    set operate_module = #{operateModule,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      operator = #{operator,jdbcType=VARCHAR},
+      operate_time = #{operateTime,jdbcType=DATE}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

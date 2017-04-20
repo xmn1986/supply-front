@@ -1,0 +1,19 @@
+#set($layout = "./layout/null.html")
+{
+	"results" : $!results,
+	"rows": [
+		#foreach($item in $!rows)
+		{
+			"id" : "$!item.id",
+			"outerSysNo" : "$!item.outerSysNo",
+			"outerSysName" : "$!item.outerSysName",
+			"processTypeId" : "$!item.processTypeId",
+			"procDefId" : "$!item.procDefId",
+			"procName" : "$!item.procName",
+			"groupId" : "$!item.groupId",
+			"lastModifyOperator" : "$!item.lastModifyOperator",
+			"lastModifyTime" : "$!item.lastModifyTime"
+		}#if($!velocityCount < $!currentCount),#end
+		#end
+	]
+}

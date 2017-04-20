@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.trc.model.ActGeProperty">
+  <resultMap id="BaseResultMap" type="com.trc.model.ActGeProperty">
+    <id column="NAME_" jdbcType="VARCHAR" property="name" />
+    <result column="VALUE_" jdbcType="VARCHAR" property="value" />
+    <result column="REV_" jdbcType="INTEGER" property="rev" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    NAME_, VALUE_, REV_
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from act_ge_property
+    where NAME_ = #{name,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from act_ge_property
+    where NAME_ = #{name,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.trc.model.ActGeProperty">
+    insert into act_ge_property (NAME_, VALUE_, REV_
+      )
+    values (#{name,jdbcType=VARCHAR}, #{value,jdbcType=VARCHAR}, #{rev,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.trc.model.ActGeProperty">
+    insert into act_ge_property
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        NAME_,
+      </if>
+      <if test="value != null">
+        VALUE_,
+      </if>
+      <if test="rev != null">
+        REV_,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="value != null">
+        #{value,jdbcType=VARCHAR},
+      </if>
+      <if test="rev != null">
+        #{rev,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.trc.model.ActGeProperty">
+    update act_ge_property
+    <set>
+      <if test="value != null">
+        VALUE_ = #{value,jdbcType=VARCHAR},
+      </if>
+      <if test="rev != null">
+        REV_ = #{rev,jdbcType=INTEGER},
+      </if>
+    </set>
+    where NAME_ = #{name,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.trc.model.ActGeProperty">
+    update act_ge_property
+    set VALUE_ = #{value,jdbcType=VARCHAR},
+      REV_ = #{rev,jdbcType=INTEGER}
+    where NAME_ = #{name,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,36 @@
+#set($layout="./layout/layout.html")
+<script src="/supply-front/js/process/outerSysProcDefAdd.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(e) {
+        $.outerSysPorcessDefAddApp.init($!outerSystems,$!procDefIds);
+    });
+</script>
+
+<div id="bodyer" class="bodyer">
+    <div class="bodyer-content">
+        <form id="J_Form" action="" method="get">
+            <div class="content-title"><img src="/supply-front/images/supply/bodyertitle.png" />
+                <div class="title-name">外部系统流程定义增加</div>
+            </div>
+            <div class="content-body">
+                <div class="lump">
+                    <table cellpadding="0" cellspacing="0">
+                        <tr>
+                        	<td><div class="td-name"><span style="color: red;"><s>*</s></span>外部系统：</div><select style="margin-left:3px;" id="outerSysNo" name="outerSysNo" ></select></td>                        	
+                            <td><div class="td-name"><span style="color: red;"><s>*</s></span>流程类型：</div><select style="margin-left:3px;" id="processTypeId" name="processTypeId" ></select></td>
+                        </tr>                    
+                        <tr>
+                         	<td><div class="td-name"><span style="color: red;"><s>*</s></span>流程定义：</div><select style="margin-left:3px;" id="procDefId" name="procDefId" ></select></td>
+                            <td><div class="td-name"><span style="color: red;"><s>*</s></span>用户组：</div><select style="margin-left:3px;" id="groupId" name="groupId" ></select></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="btn-group">
+                    <div class="btn btn-default" type="button" id="save_btn">提交</div>
+                    <div class="btn btn-default" type="button" id="reset_btn">重置</div>
+                    <button class="button" type="reset" id="btn_list">返回</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

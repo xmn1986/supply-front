@@ -1,0 +1,19 @@
+#set($layout = "./layout/null.html")
+{
+	"results" : $!results,
+	"rows": [
+		#foreach($item in $!rows)
+		{
+			"id" : "$!item.id",
+			"category" : "$!item.category",
+			"name" : "$!item.name",
+			"key" : "$!item.key",
+			"resourceName" : "$!item.resourceName",
+			"dgrmResourceName" : "$!item.dgrmResourceName",
+			"description" : "$!item.description",
+			"hasGraphicalNotation" : "$!item.hasGraphicalNotation",
+			"suspensionState" : "$!item.suspensionState"
+		}#if($!velocityCount < $!currentCount),#end
+		#end
+	]
+}

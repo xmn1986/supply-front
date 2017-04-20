@@ -1,0 +1,35 @@
+#set($layout="./layout/layout.html")
+<script src="/supply-front/js/util/GridExt.js"></script>
+<!--js主函数-->
+<script src="/supply-front/js/supply/dictTypeList.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(e) {
+        $.dictTypeApp.init();
+    });
+</script>
+ <div id="bodyer" class="bodyer">
+    <div class="bodyer-content">
+        <form id="J_Form" action="" method="get">
+            <div class="content-title"><img src="/supply-front/images/supply/bodyertitle.png" />
+                <div class="title-name">字典类型管理</div>
+            </div>
+            <div class="content-body">
+                <div class="lump">
+                    <table cellpadding="0" cellspacing="0">
+                        <tr>
+                        	<td><div class="td-name">类型名称：</div><input  type="name" id="name" name="typeName"></td>
+                        	<td><div class="td-name">状态：</div><select style="width: 150px;" id="isValid" name="isValid" ></select></td>
+                        </tr>
+                        <tr>
+                            <td><div class="btn btn-default" type="button" id="sel_btn">查询</div></td>
+                            <td><div class="btn btn-default" type="button" id="add_btn">新增</div></td>
+                        </tr>
+                    </table>
+                </div>
+                <!-- BUI grid 显示-->
+            <div class="grid-column" id="grid"></div>
+            </div>
+        </form>
+    </div>
+</div>
+

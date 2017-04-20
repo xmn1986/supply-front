@@ -1,0 +1,39 @@
+#set($layout="./layout/layout.html")
+<!--js主函数-->
+<script src="/supply-front/js/supply/dictAdd.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(e) {
+        $.dictAddApp.init();
+    });
+</script>
+<div id="bodyer" class="bodyer">
+    <div class="bodyer-content">
+        <form id="J_Form" action="" method="get">
+            <div class="content-title"><img src="/supply-front/images/supply/bodyertitle.png" />
+                <div class="title-name">字典增加2</div>
+            </div>
+            <div class="content-body">
+                <div class="lump">
+                    <table cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td><div class="td-name"><span style="color: red;"><s>*</s></span>字典名称：</div><input style="width: 200px;"  id="name" name="name" type="text"></td>
+                            <td><div class="td-name"><span style="color: red;"><s>*</s></span>字典值：</div><input style="width: 200px;"  id="value" name="value" type="text"></td>
+                        </tr>
+                        <tr>
+                            <td><div class="td-name"><span style="color: red;"><s>*</s></span>类型名称：</div><select style="width: 200px;" id="typeNo" name="typeNo"></select></td>
+                            <td><div class="td-name"><span style="color: red;"><s>*</s></span>是否生效：</div>
+                                <input type="radio" class="radiosep" id="isValid" name="isValid" value="1" checked>是
+                                <input type="radio" class="radiosep" id="isValid2" name="isValid" value="0">否
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="btn-group">
+                    <div class="btn btn-default" type="button" id="save_btn">提交</div>
+                    <button class="button" type="reset" id="reset_btn">重置</button>
+                    <button class="button" type="reset" id="btn_list">返回</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

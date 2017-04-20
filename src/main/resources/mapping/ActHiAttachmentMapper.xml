@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.trc.model.ActHiAttachment">
+  <resultMap id="BaseResultMap" type="com.trc.model.ActHiAttachment">
+    <id column="ID_" jdbcType="VARCHAR" property="id" />
+    <result column="REV_" jdbcType="INTEGER" property="rev" />
+    <result column="USER_ID_" jdbcType="VARCHAR" property="userId" />
+    <result column="NAME_" jdbcType="VARCHAR" property="name" />
+    <result column="DESCRIPTION_" jdbcType="VARCHAR" property="description" />
+    <result column="TYPE_" jdbcType="VARCHAR" property="type" />
+    <result column="TASK_ID_" jdbcType="VARCHAR" property="taskId" />
+    <result column="PROC_INST_ID_" jdbcType="VARCHAR" property="procInstId" />
+    <result column="URL_" jdbcType="VARCHAR" property="url" />
+    <result column="CONTENT_ID_" jdbcType="VARCHAR" property="contentId" />
+    <result column="TIME_" jdbcType="TIMESTAMP" property="time" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID_, REV_, USER_ID_, NAME_, DESCRIPTION_, TYPE_, TASK_ID_, PROC_INST_ID_, URL_, CONTENT_ID_, 
+    TIME_
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from act_hi_attachment
+    where ID_ = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from act_hi_attachment
+    where ID_ = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.trc.model.ActHiAttachment">
+    insert into act_hi_attachment (ID_, REV_, USER_ID_, 
+      NAME_, DESCRIPTION_, TYPE_, 
+      TASK_ID_, PROC_INST_ID_, URL_, 
+      CONTENT_ID_, TIME_)
+    values (#{id,jdbcType=VARCHAR}, #{rev,jdbcType=INTEGER}, #{userId,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, 
+      #{taskId,jdbcType=VARCHAR}, #{procInstId,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, 
+      #{contentId,jdbcType=VARCHAR}, #{time,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.trc.model.ActHiAttachment">
+    insert into act_hi_attachment
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID_,
+      </if>
+      <if test="rev != null">
+        REV_,
+      </if>
+      <if test="userId != null">
+        USER_ID_,
+      </if>
+      <if test="name != null">
+        NAME_,
+      </if>
+      <if test="description != null">
+        DESCRIPTION_,
+      </if>
+      <if test="type != null">
+        TYPE_,
+      </if>
+      <if test="taskId != null">
+        TASK_ID_,
+      </if>
+      <if test="procInstId != null">
+        PROC_INST_ID_,
+      </if>
+      <if test="url != null">
+        URL_,
+      </if>
+      <if test="contentId != null">
+        CONTENT_ID_,
+      </if>
+      <if test="time != null">
+        TIME_,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="rev != null">
+        #{rev,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="taskId != null">
+        #{taskId,jdbcType=VARCHAR},
+      </if>
+      <if test="procInstId != null">
+        #{procInstId,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="contentId != null">
+        #{contentId,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.trc.model.ActHiAttachment">
+    update act_hi_attachment
+    <set>
+      <if test="rev != null">
+        REV_ = #{rev,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        USER_ID_ = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        NAME_ = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        DESCRIPTION_ = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        TYPE_ = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="taskId != null">
+        TASK_ID_ = #{taskId,jdbcType=VARCHAR},
+      </if>
+      <if test="procInstId != null">
+        PROC_INST_ID_ = #{procInstId,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        URL_ = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="contentId != null">
+        CONTENT_ID_ = #{contentId,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        TIME_ = #{time,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID_ = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.trc.model.ActHiAttachment">
+    update act_hi_attachment
+    set REV_ = #{rev,jdbcType=INTEGER},
+      USER_ID_ = #{userId,jdbcType=VARCHAR},
+      NAME_ = #{name,jdbcType=VARCHAR},
+      DESCRIPTION_ = #{description,jdbcType=VARCHAR},
+      TYPE_ = #{type,jdbcType=VARCHAR},
+      TASK_ID_ = #{taskId,jdbcType=VARCHAR},
+      PROC_INST_ID_ = #{procInstId,jdbcType=VARCHAR},
+      URL_ = #{url,jdbcType=VARCHAR},
+      CONTENT_ID_ = #{contentId,jdbcType=VARCHAR},
+      TIME_ = #{time,jdbcType=TIMESTAMP}
+    where ID_ = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

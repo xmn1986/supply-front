@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.trc.model.ActGeBytearray">
+  <resultMap id="BaseResultMap" type="com.trc.model.ActGeBytearray">
+    <id column="ID_" jdbcType="VARCHAR" property="id" />
+    <result column="REV_" jdbcType="INTEGER" property="rev" />
+    <result column="NAME_" jdbcType="VARCHAR" property="name" />
+    <result column="DEPLOYMENT_ID_" jdbcType="VARCHAR" property="deploymentId" />
+    <result column="GENERATED_" jdbcType="TINYINT" property="generated" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.trc.model.ActGeBytearray">
+    <result column="BYTES_" jdbcType="LONGVARBINARY" property="bytes" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID_, REV_, NAME_, DEPLOYMENT_ID_, GENERATED_
+  </sql>
+  <sql id="Blob_Column_List">
+    BYTES_
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from act_ge_bytearray
+    where ID_ = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from act_ge_bytearray
+    where ID_ = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.trc.model.ActGeBytearray">
+    insert into act_ge_bytearray (ID_, REV_, NAME_, 
+      DEPLOYMENT_ID_, GENERATED_, BYTES_
+      )
+    values (#{id,jdbcType=VARCHAR}, #{rev,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+      #{deploymentId,jdbcType=VARCHAR}, #{generated,jdbcType=TINYINT}, #{bytes,jdbcType=LONGVARBINARY}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.trc.model.ActGeBytearray">
+    insert into act_ge_bytearray
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID_,
+      </if>
+      <if test="rev != null">
+        REV_,
+      </if>
+      <if test="name != null">
+        NAME_,
+      </if>
+      <if test="deploymentId != null">
+        DEPLOYMENT_ID_,
+      </if>
+      <if test="generated != null">
+        GENERATED_,
+      </if>
+      <if test="bytes != null">
+        BYTES_,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="rev != null">
+        #{rev,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="deploymentId != null">
+        #{deploymentId,jdbcType=VARCHAR},
+      </if>
+      <if test="generated != null">
+        #{generated,jdbcType=TINYINT},
+      </if>
+      <if test="bytes != null">
+        #{bytes,jdbcType=LONGVARBINARY},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.trc.model.ActGeBytearray">
+    update act_ge_bytearray
+    <set>
+      <if test="rev != null">
+        REV_ = #{rev,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        NAME_ = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="deploymentId != null">
+        DEPLOYMENT_ID_ = #{deploymentId,jdbcType=VARCHAR},
+      </if>
+      <if test="generated != null">
+        GENERATED_ = #{generated,jdbcType=TINYINT},
+      </if>
+      <if test="bytes != null">
+        BYTES_ = #{bytes,jdbcType=LONGVARBINARY},
+      </if>
+    </set>
+    where ID_ = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.trc.model.ActGeBytearray">
+    update act_ge_bytearray
+    set REV_ = #{rev,jdbcType=INTEGER},
+      NAME_ = #{name,jdbcType=VARCHAR},
+      DEPLOYMENT_ID_ = #{deploymentId,jdbcType=VARCHAR},
+      GENERATED_ = #{generated,jdbcType=TINYINT},
+      BYTES_ = #{bytes,jdbcType=LONGVARBINARY}
+    where ID_ = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.trc.model.ActGeBytearray">
+    update act_ge_bytearray
+    set REV_ = #{rev,jdbcType=INTEGER},
+      NAME_ = #{name,jdbcType=VARCHAR},
+      DEPLOYMENT_ID_ = #{deploymentId,jdbcType=VARCHAR},
+      GENERATED_ = #{generated,jdbcType=TINYINT}
+    where ID_ = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

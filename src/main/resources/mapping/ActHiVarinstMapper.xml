@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.trc.model.ActHiVarinst">
+  <resultMap id="BaseResultMap" type="com.trc.model.ActHiVarinst">
+    <id column="ID_" jdbcType="VARCHAR" property="id" />
+    <result column="PROC_INST_ID_" jdbcType="VARCHAR" property="procInstId" />
+    <result column="EXECUTION_ID_" jdbcType="VARCHAR" property="executionId" />
+    <result column="TASK_ID_" jdbcType="VARCHAR" property="taskId" />
+    <result column="NAME_" jdbcType="VARCHAR" property="name" />
+    <result column="VAR_TYPE_" jdbcType="VARCHAR" property="varType" />
+    <result column="REV_" jdbcType="INTEGER" property="rev" />
+    <result column="BYTEARRAY_ID_" jdbcType="VARCHAR" property="bytearrayId" />
+    <result column="DOUBLE_" jdbcType="DOUBLE" property="double" />
+    <result column="LONG_" jdbcType="BIGINT" property="long" />
+    <result column="TEXT_" jdbcType="VARCHAR" property="text" />
+    <result column="TEXT2_" jdbcType="VARCHAR" property="text2" />
+    <result column="CREATE_TIME_" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="LAST_UPDATED_TIME_" jdbcType="TIMESTAMP" property="lastUpdatedTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID_, PROC_INST_ID_, EXECUTION_ID_, TASK_ID_, NAME_, VAR_TYPE_, REV_, BYTEARRAY_ID_, 
+    DOUBLE_, LONG_, TEXT_, TEXT2_, CREATE_TIME_, LAST_UPDATED_TIME_
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from act_hi_varinst
+    where ID_ = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from act_hi_varinst
+    where ID_ = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.trc.model.ActHiVarinst">
+    insert into act_hi_varinst (ID_, PROC_INST_ID_, EXECUTION_ID_, 
+      TASK_ID_, NAME_, VAR_TYPE_, 
+      REV_, BYTEARRAY_ID_, DOUBLE_, 
+      LONG_, TEXT_, TEXT2_, CREATE_TIME_, 
+      LAST_UPDATED_TIME_)
+    values (#{id,jdbcType=VARCHAR}, #{procInstId,jdbcType=VARCHAR}, #{executionId,jdbcType=VARCHAR}, 
+      #{taskId,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{varType,jdbcType=VARCHAR}, 
+      #{rev,jdbcType=INTEGER}, #{bytearrayId,jdbcType=VARCHAR}, #{double,jdbcType=DOUBLE}, 
+      #{long,jdbcType=BIGINT}, #{text,jdbcType=VARCHAR}, #{text2,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{lastUpdatedTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.trc.model.ActHiVarinst">
+    insert into act_hi_varinst
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID_,
+      </if>
+      <if test="procInstId != null">
+        PROC_INST_ID_,
+      </if>
+      <if test="executionId != null">
+        EXECUTION_ID_,
+      </if>
+      <if test="taskId != null">
+        TASK_ID_,
+      </if>
+      <if test="name != null">
+        NAME_,
+      </if>
+      <if test="varType != null">
+        VAR_TYPE_,
+      </if>
+      <if test="rev != null">
+        REV_,
+      </if>
+      <if test="bytearrayId != null">
+        BYTEARRAY_ID_,
+      </if>
+      <if test="double != null">
+        DOUBLE_,
+      </if>
+      <if test="long != null">
+        LONG_,
+      </if>
+      <if test="text != null">
+        TEXT_,
+      </if>
+      <if test="text2 != null">
+        TEXT2_,
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME_,
+      </if>
+      <if test="lastUpdatedTime != null">
+        LAST_UPDATED_TIME_,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="procInstId != null">
+        #{procInstId,jdbcType=VARCHAR},
+      </if>
+      <if test="executionId != null">
+        #{executionId,jdbcType=VARCHAR},
+      </if>
+      <if test="taskId != null">
+        #{taskId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="varType != null">
+        #{varType,jdbcType=VARCHAR},
+      </if>
+      <if test="rev != null">
+        #{rev,jdbcType=INTEGER},
+      </if>
+      <if test="bytearrayId != null">
+        #{bytearrayId,jdbcType=VARCHAR},
+      </if>
+      <if test="double != null">
+        #{double,jdbcType=DOUBLE},
+      </if>
+      <if test="long != null">
+        #{long,jdbcType=BIGINT},
+      </if>
+      <if test="text != null">
+        #{text,jdbcType=VARCHAR},
+      </if>
+      <if test="text2 != null">
+        #{text2,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdatedTime != null">
+        #{lastUpdatedTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.trc.model.ActHiVarinst">
+    update act_hi_varinst
+    <set>
+      <if test="procInstId != null">
+        PROC_INST_ID_ = #{procInstId,jdbcType=VARCHAR},
+      </if>
+      <if test="executionId != null">
+        EXECUTION_ID_ = #{executionId,jdbcType=VARCHAR},
+      </if>
+      <if test="taskId != null">
+        TASK_ID_ = #{taskId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        NAME_ = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="varType != null">
+        VAR_TYPE_ = #{varType,jdbcType=VARCHAR},
+      </if>
+      <if test="rev != null">
+        REV_ = #{rev,jdbcType=INTEGER},
+      </if>
+      <if test="bytearrayId != null">
+        BYTEARRAY_ID_ = #{bytearrayId,jdbcType=VARCHAR},
+      </if>
+      <if test="double != null">
+        DOUBLE_ = #{double,jdbcType=DOUBLE},
+      </if>
+      <if test="long != null">
+        LONG_ = #{long,jdbcType=BIGINT},
+      </if>
+      <if test="text != null">
+        TEXT_ = #{text,jdbcType=VARCHAR},
+      </if>
+      <if test="text2 != null">
+        TEXT2_ = #{text2,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME_ = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdatedTime != null">
+        LAST_UPDATED_TIME_ = #{lastUpdatedTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID_ = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.trc.model.ActHiVarinst">
+    update act_hi_varinst
+    set PROC_INST_ID_ = #{procInstId,jdbcType=VARCHAR},
+      EXECUTION_ID_ = #{executionId,jdbcType=VARCHAR},
+      TASK_ID_ = #{taskId,jdbcType=VARCHAR},
+      NAME_ = #{name,jdbcType=VARCHAR},
+      VAR_TYPE_ = #{varType,jdbcType=VARCHAR},
+      REV_ = #{rev,jdbcType=INTEGER},
+      BYTEARRAY_ID_ = #{bytearrayId,jdbcType=VARCHAR},
+      DOUBLE_ = #{double,jdbcType=DOUBLE},
+      LONG_ = #{long,jdbcType=BIGINT},
+      TEXT_ = #{text,jdbcType=VARCHAR},
+      TEXT2_ = #{text2,jdbcType=VARCHAR},
+      CREATE_TIME_ = #{createTime,jdbcType=TIMESTAMP},
+      LAST_UPDATED_TIME_ = #{lastUpdatedTime,jdbcType=TIMESTAMP}
+    where ID_ = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

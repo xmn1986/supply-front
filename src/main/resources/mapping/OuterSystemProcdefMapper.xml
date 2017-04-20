@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.trc.model.OuterSystemProcdef">
+  <resultMap id="BaseResultMap" type="com.trc.model.OuterSystemProcdef">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="outer_sys_no" jdbcType="VARCHAR" property="outerSysNo" />
+    <result column="outer_sys_name" jdbcType="VARCHAR" property="outerSysName" />
+    <result column="process_type_id" jdbcType="VARCHAR" property="processTypeId" />
+    <result column="proc_def_id" jdbcType="VARCHAR" property="procDefId" />
+    <result column="proc_name" jdbcType="VARCHAR" property="procName" />
+    <result column="group_id" jdbcType="VARCHAR" property="groupId" />
+    <result column="last_modify_operator" jdbcType="VARCHAR" property="lastModifyOperator" />
+    <result column="last_modify_time" jdbcType="DATE" property="lastModifyTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, outer_sys_no, outer_sys_name, process_type_id, proc_def_id, proc_name, group_id, 
+    last_modify_operator, last_modify_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from outer_system_procdef
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from outer_system_procdef
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.trc.model.OuterSystemProcdef">
+    insert into outer_system_procdef (id, outer_sys_no, outer_sys_name, 
+      process_type_id, proc_def_id, proc_name, 
+      group_id, last_modify_operator, last_modify_time
+      )
+    values (#{id,jdbcType=BIGINT}, #{outerSysNo,jdbcType=VARCHAR}, #{outerSysName,jdbcType=VARCHAR}, 
+      #{processTypeId,jdbcType=VARCHAR}, #{procDefId,jdbcType=VARCHAR}, #{procName,jdbcType=VARCHAR}, 
+      #{groupId,jdbcType=VARCHAR}, #{lastModifyOperator,jdbcType=VARCHAR}, #{lastModifyTime,jdbcType=DATE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.trc.model.OuterSystemProcdef">
+    insert into outer_system_procdef
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="outerSysNo != null">
+        outer_sys_no,
+      </if>
+      <if test="outerSysName != null">
+        outer_sys_name,
+      </if>
+      <if test="processTypeId != null">
+        process_type_id,
+      </if>
+      <if test="procDefId != null">
+        proc_def_id,
+      </if>
+      <if test="procName != null">
+        proc_name,
+      </if>
+      <if test="groupId != null">
+        group_id,
+      </if>
+      <if test="lastModifyOperator != null">
+        last_modify_operator,
+      </if>
+      <if test="lastModifyTime != null">
+        last_modify_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="outerSysNo != null">
+        #{outerSysNo,jdbcType=VARCHAR},
+      </if>
+      <if test="outerSysName != null">
+        #{outerSysName,jdbcType=VARCHAR},
+      </if>
+      <if test="processTypeId != null">
+        #{processTypeId,jdbcType=VARCHAR},
+      </if>
+      <if test="procDefId != null">
+        #{procDefId,jdbcType=VARCHAR},
+      </if>
+      <if test="procName != null">
+        #{procName,jdbcType=VARCHAR},
+      </if>
+      <if test="groupId != null">
+        #{groupId,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifyOperator != null">
+        #{lastModifyOperator,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifyTime != null">
+        #{lastModifyTime,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.trc.model.OuterSystemProcdef">
+    update outer_system_procdef
+    <set>
+      <if test="outerSysNo != null">
+        outer_sys_no = #{outerSysNo,jdbcType=VARCHAR},
+      </if>
+      <if test="outerSysName != null">
+        outer_sys_name = #{outerSysName,jdbcType=VARCHAR},
+      </if>
+      <if test="processTypeId != null">
+        process_type_id = #{processTypeId,jdbcType=VARCHAR},
+      </if>
+      <if test="procDefId != null">
+        proc_def_id = #{procDefId,jdbcType=VARCHAR},
+      </if>
+      <if test="procName != null">
+        proc_name = #{procName,jdbcType=VARCHAR},
+      </if>
+      <if test="groupId != null">
+        group_id = #{groupId,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifyOperator != null">
+        last_modify_operator = #{lastModifyOperator,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifyTime != null">
+        last_modify_time = #{lastModifyTime,jdbcType=DATE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.trc.model.OuterSystemProcdef">
+    update outer_system_procdef
+    set outer_sys_no = #{outerSysNo,jdbcType=VARCHAR},
+      outer_sys_name = #{outerSysName,jdbcType=VARCHAR},
+      process_type_id = #{processTypeId,jdbcType=VARCHAR},
+      proc_def_id = #{procDefId,jdbcType=VARCHAR},
+      proc_name = #{procName,jdbcType=VARCHAR},
+      group_id = #{groupId,jdbcType=VARCHAR},
+      last_modify_operator = #{lastModifyOperator,jdbcType=VARCHAR},
+      last_modify_time = #{lastModifyTime,jdbcType=DATE}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+<!--   <resultMap id="pageCount" type="java.lang.Integer">  
+    <result column="totalCount" property="totalCount" jdbcType="INTEGER" />  
+	</resultMap>
+  
+  <select id="totalCount" resultMap="pageCount">
+    	select count(ID) as totalCount from outer_system_procdef
+  </select> -->
+  
+  <select id="totalCount" resultType="java.lang.Integer">
+    	select count(ID) as totalCount from outer_system_procdef
+  </select>
+  
+  <select id="pagination" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from outer_system_procdef
+    LIMIT #{start},#{limit}
+  </select>
+  
+</mapper>

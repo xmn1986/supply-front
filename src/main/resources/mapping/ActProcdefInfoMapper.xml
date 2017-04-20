@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.trc.model.ActProcdefInfo">
+  <resultMap id="BaseResultMap" type="com.trc.model.ActProcdefInfo">
+    <id column="ID_" jdbcType="VARCHAR" property="id" />
+    <result column="PROC_DEF_ID_" jdbcType="VARCHAR" property="procDefId" />
+    <result column="REV_" jdbcType="INTEGER" property="rev" />
+    <result column="INFO_JSON_ID_" jdbcType="VARCHAR" property="infoJsonId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID_, PROC_DEF_ID_, REV_, INFO_JSON_ID_
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from act_procdef_info
+    where ID_ = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from act_procdef_info
+    where ID_ = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.trc.model.ActProcdefInfo">
+    insert into act_procdef_info (ID_, PROC_DEF_ID_, REV_, 
+      INFO_JSON_ID_)
+    values (#{id,jdbcType=VARCHAR}, #{procDefId,jdbcType=VARCHAR}, #{rev,jdbcType=INTEGER}, 
+      #{infoJsonId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.trc.model.ActProcdefInfo">
+    insert into act_procdef_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID_,
+      </if>
+      <if test="procDefId != null">
+        PROC_DEF_ID_,
+      </if>
+      <if test="rev != null">
+        REV_,
+      </if>
+      <if test="infoJsonId != null">
+        INFO_JSON_ID_,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="procDefId != null">
+        #{procDefId,jdbcType=VARCHAR},
+      </if>
+      <if test="rev != null">
+        #{rev,jdbcType=INTEGER},
+      </if>
+      <if test="infoJsonId != null">
+        #{infoJsonId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.trc.model.ActProcdefInfo">
+    update act_procdef_info
+    <set>
+      <if test="procDefId != null">
+        PROC_DEF_ID_ = #{procDefId,jdbcType=VARCHAR},
+      </if>
+      <if test="rev != null">
+        REV_ = #{rev,jdbcType=INTEGER},
+      </if>
+      <if test="infoJsonId != null">
+        INFO_JSON_ID_ = #{infoJsonId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID_ = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.trc.model.ActProcdefInfo">
+    update act_procdef_info
+    set PROC_DEF_ID_ = #{procDefId,jdbcType=VARCHAR},
+      REV_ = #{rev,jdbcType=INTEGER},
+      INFO_JSON_ID_ = #{infoJsonId,jdbcType=VARCHAR}
+    where ID_ = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

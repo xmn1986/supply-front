@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.trc.model.Dict">
+  <resultMap id="BaseResultMap" type="com.trc.model.Dict">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="outer_sys_no" jdbcType="VARCHAR" property="outerSysNo" />
+    <result column="type_no" jdbcType="VARCHAR" property="typeNo" />
+    <result column="value" jdbcType="VARCHAR" property="value" />
+    <result column="last_modify_operator" jdbcType="VARCHAR" property="lastModifyOperator" />
+    <result column="last_modify_time" jdbcType="DATE" property="lastModifyTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, outer_sys_no, type_no, value, last_modify_operator, last_modify_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from dict
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from dict
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.trc.model.Dict">
+    insert into dict (id, outer_sys_no, type_no, 
+      value, last_modify_operator, last_modify_time
+      )
+    values (#{id,jdbcType=BIGINT}, #{outerSysNo,jdbcType=VARCHAR}, #{typeNo,jdbcType=VARCHAR}, 
+      #{value,jdbcType=VARCHAR}, #{lastModifyOperator,jdbcType=VARCHAR}, #{lastModifyTime,jdbcType=DATE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.trc.model.Dict">
+    insert into dict
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="outerSysNo != null">
+        outer_sys_no,
+      </if>
+      <if test="typeNo != null">
+        type_no,
+      </if>
+      <if test="value != null">
+        value,
+      </if>
+      <if test="lastModifyOperator != null">
+        last_modify_operator,
+      </if>
+      <if test="lastModifyTime != null">
+        last_modify_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="outerSysNo != null">
+        #{outerSysNo,jdbcType=VARCHAR},
+      </if>
+      <if test="typeNo != null">
+        #{typeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="value != null">
+        #{value,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifyOperator != null">
+        #{lastModifyOperator,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifyTime != null">
+        #{lastModifyTime,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.trc.model.Dict">
+    update dict
+    <set>
+      <if test="outerSysNo != null">
+        outer_sys_no = #{outerSysNo,jdbcType=VARCHAR},
+      </if>
+      <if test="typeNo != null">
+        type_no = #{typeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="value != null">
+        value = #{value,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifyOperator != null">
+        last_modify_operator = #{lastModifyOperator,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifyTime != null">
+        last_modify_time = #{lastModifyTime,jdbcType=DATE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.trc.model.Dict">
+    update dict
+    set outer_sys_no = #{outerSysNo,jdbcType=VARCHAR},
+      type_no = #{typeNo,jdbcType=VARCHAR},
+      value = #{value,jdbcType=VARCHAR},
+      last_modify_operator = #{lastModifyOperator,jdbcType=VARCHAR},
+      last_modify_time = #{lastModifyTime,jdbcType=DATE}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+  <!-- 根据字典类型查询外部系统字典 -->
+  <select id="selectOuterSysDict" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from dict
+    where outer_sys_no = #{outerSysNo}
+    and type_no = #{typeNo}
+  </select>
+  
+</mapper>

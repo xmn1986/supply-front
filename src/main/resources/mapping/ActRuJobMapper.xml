@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.trc.model.ActRuJob">
+  <resultMap id="BaseResultMap" type="com.trc.model.ActRuJob">
+    <id column="ID_" jdbcType="VARCHAR" property="id" />
+    <result column="REV_" jdbcType="INTEGER" property="rev" />
+    <result column="TYPE_" jdbcType="VARCHAR" property="type" />
+    <result column="LOCK_EXP_TIME_" jdbcType="TIMESTAMP" property="lockExpTime" />
+    <result column="LOCK_OWNER_" jdbcType="VARCHAR" property="lockOwner" />
+    <result column="EXCLUSIVE_" jdbcType="BIT" property="exclusive" />
+    <result column="EXECUTION_ID_" jdbcType="VARCHAR" property="executionId" />
+    <result column="PROCESS_INSTANCE_ID_" jdbcType="VARCHAR" property="processInstanceId" />
+    <result column="PROC_DEF_ID_" jdbcType="VARCHAR" property="procDefId" />
+    <result column="RETRIES_" jdbcType="INTEGER" property="retries" />
+    <result column="EXCEPTION_STACK_ID_" jdbcType="VARCHAR" property="exceptionStackId" />
+    <result column="EXCEPTION_MSG_" jdbcType="VARCHAR" property="exceptionMsg" />
+    <result column="DUEDATE_" jdbcType="TIMESTAMP" property="duedate" />
+    <result column="REPEAT_" jdbcType="VARCHAR" property="repeat" />
+    <result column="HANDLER_TYPE_" jdbcType="VARCHAR" property="handlerType" />
+    <result column="HANDLER_CFG_" jdbcType="VARCHAR" property="handlerCfg" />
+    <result column="TENANT_ID_" jdbcType="VARCHAR" property="tenantId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID_, REV_, TYPE_, LOCK_EXP_TIME_, LOCK_OWNER_, EXCLUSIVE_, EXECUTION_ID_, PROCESS_INSTANCE_ID_, 
+    PROC_DEF_ID_, RETRIES_, EXCEPTION_STACK_ID_, EXCEPTION_MSG_, DUEDATE_, REPEAT_, HANDLER_TYPE_, 
+    HANDLER_CFG_, TENANT_ID_
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from act_ru_job
+    where ID_ = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from act_ru_job
+    where ID_ = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.trc.model.ActRuJob">
+    insert into act_ru_job (ID_, REV_, TYPE_, 
+      LOCK_EXP_TIME_, LOCK_OWNER_, EXCLUSIVE_, 
+      EXECUTION_ID_, PROCESS_INSTANCE_ID_, PROC_DEF_ID_, 
+      RETRIES_, EXCEPTION_STACK_ID_, EXCEPTION_MSG_, 
+      DUEDATE_, REPEAT_, HANDLER_TYPE_, 
+      HANDLER_CFG_, TENANT_ID_)
+    values (#{id,jdbcType=VARCHAR}, #{rev,jdbcType=INTEGER}, #{type,jdbcType=VARCHAR}, 
+      #{lockExpTime,jdbcType=TIMESTAMP}, #{lockOwner,jdbcType=VARCHAR}, #{exclusive,jdbcType=BIT}, 
+      #{executionId,jdbcType=VARCHAR}, #{processInstanceId,jdbcType=VARCHAR}, #{procDefId,jdbcType=VARCHAR}, 
+      #{retries,jdbcType=INTEGER}, #{exceptionStackId,jdbcType=VARCHAR}, #{exceptionMsg,jdbcType=VARCHAR}, 
+      #{duedate,jdbcType=TIMESTAMP}, #{repeat,jdbcType=VARCHAR}, #{handlerType,jdbcType=VARCHAR}, 
+      #{handlerCfg,jdbcType=VARCHAR}, #{tenantId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.trc.model.ActRuJob">
+    insert into act_ru_job
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID_,
+      </if>
+      <if test="rev != null">
+        REV_,
+      </if>
+      <if test="type != null">
+        TYPE_,
+      </if>
+      <if test="lockExpTime != null">
+        LOCK_EXP_TIME_,
+      </if>
+      <if test="lockOwner != null">
+        LOCK_OWNER_,
+      </if>
+      <if test="exclusive != null">
+        EXCLUSIVE_,
+      </if>
+      <if test="executionId != null">
+        EXECUTION_ID_,
+      </if>
+      <if test="processInstanceId != null">
+        PROCESS_INSTANCE_ID_,
+      </if>
+      <if test="procDefId != null">
+        PROC_DEF_ID_,
+      </if>
+      <if test="retries != null">
+        RETRIES_,
+      </if>
+      <if test="exceptionStackId != null">
+        EXCEPTION_STACK_ID_,
+      </if>
+      <if test="exceptionMsg != null">
+        EXCEPTION_MSG_,
+      </if>
+      <if test="duedate != null">
+        DUEDATE_,
+      </if>
+      <if test="repeat != null">
+        REPEAT_,
+      </if>
+      <if test="handlerType != null">
+        HANDLER_TYPE_,
+      </if>
+      <if test="handlerCfg != null">
+        HANDLER_CFG_,
+      </if>
+      <if test="tenantId != null">
+        TENANT_ID_,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="rev != null">
+        #{rev,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="lockExpTime != null">
+        #{lockExpTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lockOwner != null">
+        #{lockOwner,jdbcType=VARCHAR},
+      </if>
+      <if test="exclusive != null">
+        #{exclusive,jdbcType=BIT},
+      </if>
+      <if test="executionId != null">
+        #{executionId,jdbcType=VARCHAR},
+      </if>
+      <if test="processInstanceId != null">
+        #{processInstanceId,jdbcType=VARCHAR},
+      </if>
+      <if test="procDefId != null">
+        #{procDefId,jdbcType=VARCHAR},
+      </if>
+      <if test="retries != null">
+        #{retries,jdbcType=INTEGER},
+      </if>
+      <if test="exceptionStackId != null">
+        #{exceptionStackId,jdbcType=VARCHAR},
+      </if>
+      <if test="exceptionMsg != null">
+        #{exceptionMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="duedate != null">
+        #{duedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="repeat != null">
+        #{repeat,jdbcType=VARCHAR},
+      </if>
+      <if test="handlerType != null">
+        #{handlerType,jdbcType=VARCHAR},
+      </if>
+      <if test="handlerCfg != null">
+        #{handlerCfg,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantId != null">
+        #{tenantId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.trc.model.ActRuJob">
+    update act_ru_job
+    <set>
+      <if test="rev != null">
+        REV_ = #{rev,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        TYPE_ = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="lockExpTime != null">
+        LOCK_EXP_TIME_ = #{lockExpTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lockOwner != null">
+        LOCK_OWNER_ = #{lockOwner,jdbcType=VARCHAR},
+      </if>
+      <if test="exclusive != null">
+        EXCLUSIVE_ = #{exclusive,jdbcType=BIT},
+      </if>
+      <if test="executionId != null">
+        EXECUTION_ID_ = #{executionId,jdbcType=VARCHAR},
+      </if>
+      <if test="processInstanceId != null">
+        PROCESS_INSTANCE_ID_ = #{processInstanceId,jdbcType=VARCHAR},
+      </if>
+      <if test="procDefId != null">
+        PROC_DEF_ID_ = #{procDefId,jdbcType=VARCHAR},
+      </if>
+      <if test="retries != null">
+        RETRIES_ = #{retries,jdbcType=INTEGER},
+      </if>
+      <if test="exceptionStackId != null">
+        EXCEPTION_STACK_ID_ = #{exceptionStackId,jdbcType=VARCHAR},
+      </if>
+      <if test="exceptionMsg != null">
+        EXCEPTION_MSG_ = #{exceptionMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="duedate != null">
+        DUEDATE_ = #{duedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="repeat != null">
+        REPEAT_ = #{repeat,jdbcType=VARCHAR},
+      </if>
+      <if test="handlerType != null">
+        HANDLER_TYPE_ = #{handlerType,jdbcType=VARCHAR},
+      </if>
+      <if test="handlerCfg != null">
+        HANDLER_CFG_ = #{handlerCfg,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantId != null">
+        TENANT_ID_ = #{tenantId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID_ = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.trc.model.ActRuJob">
+    update act_ru_job
+    set REV_ = #{rev,jdbcType=INTEGER},
+      TYPE_ = #{type,jdbcType=VARCHAR},
+      LOCK_EXP_TIME_ = #{lockExpTime,jdbcType=TIMESTAMP},
+      LOCK_OWNER_ = #{lockOwner,jdbcType=VARCHAR},
+      EXCLUSIVE_ = #{exclusive,jdbcType=BIT},
+      EXECUTION_ID_ = #{executionId,jdbcType=VARCHAR},
+      PROCESS_INSTANCE_ID_ = #{processInstanceId,jdbcType=VARCHAR},
+      PROC_DEF_ID_ = #{procDefId,jdbcType=VARCHAR},
+      RETRIES_ = #{retries,jdbcType=INTEGER},
+      EXCEPTION_STACK_ID_ = #{exceptionStackId,jdbcType=VARCHAR},
+      EXCEPTION_MSG_ = #{exceptionMsg,jdbcType=VARCHAR},
+      DUEDATE_ = #{duedate,jdbcType=TIMESTAMP},
+      REPEAT_ = #{repeat,jdbcType=VARCHAR},
+      HANDLER_TYPE_ = #{handlerType,jdbcType=VARCHAR},
+      HANDLER_CFG_ = #{handlerCfg,jdbcType=VARCHAR},
+      TENANT_ID_ = #{tenantId,jdbcType=VARCHAR}
+    where ID_ = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

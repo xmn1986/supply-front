@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.trc.model.ActIdMembership">
+  <resultMap id="BaseResultMap" type="com.trc.model.ActIdMembership">
+    <id column="USER_ID_" jdbcType="VARCHAR" property="userId" />
+    <id column="GROUP_ID_" jdbcType="VARCHAR" property="groupId" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="com.trc.model.ActIdMembership">
+    delete from act_id_membership
+    where USER_ID_ = #{userId,jdbcType=VARCHAR}
+      and GROUP_ID_ = #{groupId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.trc.model.ActIdMembership">
+    insert into act_id_membership (USER_ID_, GROUP_ID_)
+    values (#{userId,jdbcType=VARCHAR}, #{groupId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.trc.model.ActIdMembership">
+    insert into act_id_membership
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        USER_ID_,
+      </if>
+      <if test="groupId != null">
+        GROUP_ID_,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="groupId != null">
+        #{groupId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  
+  
+    <insert id="batchInsert"  parameterType="java.util.List">  
+	    <selectKey resultType="int" keyProperty="id" order="AFTER">  
+	        SELECT  
+	        LAST_INSERT_ID()  
+	    </selectKey>  
+	    insert into act_id_membership (USER_ID_,GROUP_ID_)   
+	    values  
+	    <foreach collection="list" item="item" index="index" separator="," >  
+	        (#{item.userId},#{item.groupId})  
+	    </foreach>  
+	</insert>  
+
+   <delete id="delete" parameterType="com.trc.model.ActIdMembership">
+    delete from act_id_membership
+       where 1=1
+	    <if test="userId != null">
+	    	and USER_ID_ = #{userId}
+	    </if>
+	    <if test="groupId != null">
+	    	and GROUP_ID_ = #{groupId}
+	    </if>
+  </delete>
+
+  
+  
+</mapper>

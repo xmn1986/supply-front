@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.trc.model.TaskCallbackInfo">
+  <resultMap id="BaseResultMap" type="com.trc.model.TaskCallbackInfo">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="task_id" jdbcType="VARCHAR" property="taskId" />
+    <result column="service_type" jdbcType="VARCHAR" property="serviceType" />
+    <result column="parameter" jdbcType="VARCHAR" property="parameter" />
+    <result column="return_parameter" jdbcType="VARCHAR" property="returnParameter" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="error_msg" jdbcType="VARCHAR" property="errorMsg" />
+    <result column="last_modify_operator" jdbcType="VARCHAR" property="lastModifyOperator" />
+    <result column="last_modify_time" jdbcType="DATE" property="lastModifyTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, task_id, service_type, parameter, return_parameter, status, error_msg, last_modify_operator, 
+    last_modify_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from task_callback_info
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from task_callback_info
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.trc.model.TaskCallbackInfo">
+    insert into task_callback_info (id, task_id, service_type, 
+      parameter, return_parameter, status, 
+      error_msg, last_modify_operator, last_modify_time
+      )
+    values (#{id,jdbcType=BIGINT}, #{taskId,jdbcType=VARCHAR}, #{serviceType,jdbcType=VARCHAR}, 
+      #{parameter,jdbcType=VARCHAR}, #{returnParameter,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, 
+      #{errorMsg,jdbcType=VARCHAR}, #{lastModifyOperator,jdbcType=VARCHAR}, #{lastModifyTime,jdbcType=DATE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.trc.model.TaskCallbackInfo">
+    insert into task_callback_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="taskId != null">
+        task_id,
+      </if>
+      <if test="serviceType != null">
+        service_type,
+      </if>
+      <if test="parameter != null">
+        parameter,
+      </if>
+      <if test="returnParameter != null">
+        return_parameter,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="errorMsg != null">
+        error_msg,
+      </if>
+      <if test="lastModifyOperator != null">
+        last_modify_operator,
+      </if>
+      <if test="lastModifyTime != null">
+        last_modify_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="taskId != null">
+        #{taskId,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceType != null">
+        #{serviceType,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter != null">
+        #{parameter,jdbcType=VARCHAR},
+      </if>
+      <if test="returnParameter != null">
+        #{returnParameter,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="errorMsg != null">
+        #{errorMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifyOperator != null">
+        #{lastModifyOperator,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifyTime != null">
+        #{lastModifyTime,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.trc.model.TaskCallbackInfo">
+    update task_callback_info
+    <set>
+      <if test="taskId != null">
+        task_id = #{taskId,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceType != null">
+        service_type = #{serviceType,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter != null">
+        parameter = #{parameter,jdbcType=VARCHAR},
+      </if>
+      <if test="returnParameter != null">
+        return_parameter = #{returnParameter,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="errorMsg != null">
+        error_msg = #{errorMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifyOperator != null">
+        last_modify_operator = #{lastModifyOperator,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifyTime != null">
+        last_modify_time = #{lastModifyTime,jdbcType=DATE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.trc.model.TaskCallbackInfo">
+    update task_callback_info
+    set task_id = #{taskId,jdbcType=VARCHAR},
+      service_type = #{serviceType,jdbcType=VARCHAR},
+      parameter = #{parameter,jdbcType=VARCHAR},
+      return_parameter = #{returnParameter,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      error_msg = #{errorMsg,jdbcType=VARCHAR},
+      last_modify_operator = #{lastModifyOperator,jdbcType=VARCHAR},
+      last_modify_time = #{lastModifyTime,jdbcType=DATE}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

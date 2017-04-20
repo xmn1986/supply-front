@@ -1,0 +1,37 @@
+#set($layout="./layout/layout.html")
+<script src="/supply-front/js/util/GridExt.js"></script>
+<!--js主函数-->
+<script src="/supply-front/js/process/processDefList.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(e) {
+        $.processDefListApp.init();
+    });
+</script>
+ <div id="bodyer" class="bodyer">
+    <div class="bodyer-content">
+        <form id="J_Form" action="" method="get">
+            <div class="content-title"><img src="/supply-front/images/supply/bodyertitle.png" />
+                <div class="title-name">流程定义管理</div>
+            </div>
+            <div class="content-body">
+                <div class="lump">
+                    <table cellpadding="0" cellspacing="0">
+                        <tr>
+                        	<td><div class="td-name">流程名称：</div><select style="width:80%;margin-left:3px;" id="hospitalId" name="hospitalId" ></select></td>
+                        	<td><div class="td-name"><span style="color: red;"><s>*</s></span>流程类别：</div>
+                            <select style="margin-left:3px;" id="businessType" name="businessType" ></select>
+                            </td>
+                        	<td><div class="td-name">挂起状态：</div><select style="width:80%;margin-left:3px;" id="deptId" name="deptId" ></select></td>
+                        </tr> 
+                            <td><div class="btn btn-default" type="button" id="sel_btn">查询</div></td>
+                            <td><div class="td-name"></div></td>
+                        </tr>
+                    </table>
+                </div>
+                <!-- BUI grid 显示-->
+            <div class="grid-column" id="grid"></div>
+            </div>
+        </form>
+    </div>
+</div>
+

@@ -1,0 +1,64 @@
+#set($layout="./layout/layout.html")
+<div class="header">
+      <div class="dl-title">
+          <span class="lp-title-port"></span>泰然城流程管理系统</span>
+      </div>
+    <div class="dl-log">欢迎您，<span class="dl-log-user">$!user.id</span><a href="" title="文档库" class="dl-log-quit">帮助</a>
+     <a href="/supply-front/logout.do" title="退出系统" class="dl-log-quit">[退出]</a>
+   <!--  #if($!user)<a href="/supply-front/logout.do" title="退出系统" class="dl-log-quit">[退出]</a>#else<a href="/supply-front" title="登陆系统" class="dl-log-quit">[登陆]</a>#end -->
+    </div>
+  </div>
+   <div class="content">
+    <div class="dl-main-nav">
+      <div class="dl-inform"><div class="dl-inform-title">贴心小秘书<s class="dl-inform-icon dl-up"></s></div></div>
+      <ul id="J_Nav"  class="nav-list ks-clear">
+        <li class="nav-item dl-selected"><div class="nav-item-inner nav-home">首页</div></li>
+      </ul>
+    </div>
+    <ul id="J_NavContent" class="dl-tab-conten">
+    </ul>
+   </div>
+  <script>
+  $(document).ready(function(e) {
+
+      BUI.use('common/main',function(){
+      var config = [{
+          id:'menu',
+          homePage : 'code',
+          menu:[
+            {
+              text:'配置管理',
+              items:[
+				{id:'code',text:'首页',href:$.ProjectURL()+'/system/index.do',closeable : false},
+				{id:'operation11',text:'字典类型管理',href:$.ProjectURL()+'/config/dictTypeList.do'},
+				{id:'operation12',text:'字典管理',href:$.ProjectURL()+'/config/dictList.do'}
+              ]
+            },{
+                text:'流程管理',
+                items:[
+                  {id:'operation21',text:'流程定义管理',href:$.ProjectURL()+'/process/processDefList.do'},
+                  {id:'operation22',text:'外部系统流程定义管理',href:$.ProjectURL()+'/system/outerSysProcessDefList.do'},
+                  {id:'operation23',text:'任务执行管理',href:$.ProjectURL()+'/hospital/hospitalRelationListPage.do'}
+                ]
+              },
+              {
+                  text:'任务管理',
+                  items:[
+                    {id:'operation31',text:'任务管理',href:$.ProjectURL()+'/task/taskList.do'},
+                  ]
+                },
+              {
+                  text:'用户管理',
+                  items:[
+                    {id:'operation31',text:'用户管理',href:$.ProjectURL()+'/page/outPatientPage.do?transferType=1'},
+                    {id:'operation32',text:'角色管理',href:$.ProjectURL()+'/page/checkPage.do?transferType=1'}
+                  ]
+                }
+            ]
+          }];
+      new PageUtil.MainPage({
+        modulesConfig : config
+      });
+    });
+  });
+  </script>

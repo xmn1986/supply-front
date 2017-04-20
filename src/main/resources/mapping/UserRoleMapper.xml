@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.trc.model.UserRole">
+  <resultMap id="BaseResultMap" type="com.trc.model.UserRole">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="outer_sys_no" jdbcType="VARCHAR" property="outerSysNo" />
+    <result column="role_id" jdbcType="VARCHAR" property="roleId" />
+    <result column="role_name" jdbcType="VARCHAR" property="roleName" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="activiti_group_id" jdbcType="VARCHAR" property="activitiGroupId" />
+    <result column="activiti_user_id" jdbcType="VARCHAR" property="activitiUserId" />
+    <result column="is_valid" jdbcType="VARCHAR" property="isValid" />
+    <result column="last_modify_operator" jdbcType="VARCHAR" property="lastModifyOperator" />
+    <result column="last_modify_time" jdbcType="VARCHAR" property="lastModifyTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, outer_sys_no, role_id, role_name, user_id, user_name, activiti_group_id, activiti_user_id, 
+    is_valid, last_modify_operator, last_modify_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user_role
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from user_role
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.trc.model.UserRole">
+    insert into user_role (id, outer_sys_no, role_id, 
+      role_name, user_id, user_name, 
+      activiti_group_id, activiti_user_id, is_valid, 
+      last_modify_operator, last_modify_time)
+    values (#{id,jdbcType=BIGINT}, #{outerSysNo,jdbcType=VARCHAR}, #{roleId,jdbcType=VARCHAR}, 
+      #{roleName,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, 
+      #{activitiGroupId,jdbcType=VARCHAR}, #{activitiUserId,jdbcType=VARCHAR}, #{isValid,jdbcType=VARCHAR}, 
+      #{lastModifyOperator,jdbcType=VARCHAR}, #{lastModifyTime,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.trc.model.UserRole">
+    insert into user_role
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="outerSysNo != null">
+        outer_sys_no,
+      </if>
+      <if test="roleId != null">
+        role_id,
+      </if>
+      <if test="roleName != null">
+        role_name,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="activitiGroupId != null">
+        activiti_group_id,
+      </if>
+      <if test="activitiUserId != null">
+        activiti_user_id,
+      </if>
+      <if test="isValid != null">
+        is_valid,
+      </if>
+      <if test="lastModifyOperator != null">
+        last_modify_operator,
+      </if>
+      <if test="lastModifyTime != null">
+        last_modify_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="outerSysNo != null">
+        #{outerSysNo,jdbcType=VARCHAR},
+      </if>
+      <if test="roleId != null">
+        #{roleId,jdbcType=VARCHAR},
+      </if>
+      <if test="roleName != null">
+        #{roleName,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="activitiGroupId != null">
+        #{activitiGroupId,jdbcType=VARCHAR},
+      </if>
+      <if test="activitiUserId != null">
+        #{activitiUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="isValid != null">
+        #{isValid,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifyOperator != null">
+        #{lastModifyOperator,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifyTime != null">
+        #{lastModifyTime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.trc.model.UserRole">
+    update user_role
+    <set>
+      <if test="outerSysNo != null">
+        outer_sys_no = #{outerSysNo,jdbcType=VARCHAR},
+      </if>
+      <if test="roleId != null">
+        role_id = #{roleId,jdbcType=VARCHAR},
+      </if>
+      <if test="roleName != null">
+        role_name = #{roleName,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="activitiGroupId != null">
+        activiti_group_id = #{activitiGroupId,jdbcType=VARCHAR},
+      </if>
+      <if test="activitiUserId != null">
+        activiti_user_id = #{activitiUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="isValid != null">
+        is_valid = #{isValid,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifyOperator != null">
+        last_modify_operator = #{lastModifyOperator,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifyTime != null">
+        last_modify_time = #{lastModifyTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.trc.model.UserRole">
+    update user_role
+    set outer_sys_no = #{outerSysNo,jdbcType=VARCHAR},
+      role_id = #{roleId,jdbcType=VARCHAR},
+      role_name = #{roleName,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=VARCHAR},
+      user_name = #{userName,jdbcType=VARCHAR},
+      activiti_group_id = #{activitiGroupId,jdbcType=VARCHAR},
+      activiti_user_id = #{activitiUserId,jdbcType=VARCHAR},
+      is_valid = #{isValid,jdbcType=VARCHAR},
+      last_modify_operator = #{lastModifyOperator,jdbcType=VARCHAR},
+      last_modify_time = #{lastModifyTime,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+    <select id="select" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user_role
+  </select>
+  
+  <select id="selectByMap" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user_role
+    where 1=1
+    <if test="id != null">
+    	and id = #{id},
+    </if>
+    <if test="outerSysNo != null">
+    	outer_sys_no = #{outerSysNo},
+    </if>
+    <if test="roleId != null">
+    	role_id = #{roleId},
+    </if>
+    <if test="roleName != null">
+    	role_name = #{roleName},
+    </if>
+    <if test="userId != null">
+    	user_id = #{userId},
+    </if>
+    <if test="userName != null">
+    	user_name = #{userName},
+    </if>
+    <if test="activitiGroupId != null">
+    	activiti_group_id = #{activitiGroupId},
+    </if>
+    <if test="activitiUserId != null">
+    	activiti_user_id = #{activitiUserId},
+    </if>
+    <if test="isValid != null">
+    	is_valid = #{isValid},
+    </if>
+  </select>
+  
+  <insert id="batchInsert"  parameterType="java.util.List">  
+    <selectKey resultType="int" keyProperty="id" order="AFTER">  
+        SELECT  
+        LAST_INSERT_ID()  
+    </selectKey>  
+    insert into user_role (outer_sys_no,role_id,role_name,user_id,user_name,activiti_group_id,activiti_user_id,is_valid,last_modify_time)   
+    values  
+    <foreach collection="list" item="item" index="index" separator="," >  
+        (#{item.outerSysNo},#{item.roleId},#{item.roleName},#{item.userId},#{item.userName},#{item.activitiGroupId},#{item.activitiUserId},#{item.isValid},#{item.lastModifyTime})  
+    </foreach>  
+</insert>  
+
+	<delete id="delete" parameterType="java.lang.Integer">
+	    delete from user_role
+	    where 1=1
+    <if test="id != null">
+    	and id = #{id}
+    </if>
+    <if test="outerSysNo != null">
+    	and outer_sys_no = #{outerSysNo}
+    </if>
+    <if test="roleId != null">
+    	and role_id = #{roleId}
+    </if>
+    <if test="roleName != null">
+    	and role_name = #{roleName}
+    </if>
+    <if test="userId != null">
+    	and user_id = #{userId}
+    </if>
+    <if test="userName != null">
+    	and user_name = #{userName}
+    </if>
+    <if test="activitiGroupId != null">
+    	and activiti_group_id = #{activitiGroupId}
+    </if>
+    <if test="activitiUserId != null">
+    	and activiti_user_id = #{activitiUserId}
+    </if>
+    <if test="isValid != null">
+    	and is_valid = #{isValid}
+    </if>
+	</delete>
+  
+</mapper>

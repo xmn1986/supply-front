@@ -1,0 +1,27 @@
+#set($layout = "./layout/null.html")
+{
+	"results" : $!results,
+	"rows": [
+		#foreach($item in $!rows)
+		{
+		    "id" : "$!item.id",
+			"outerSysName" : "$!item.outerSysName",
+			"outerSysNo" : "$!item.outerSysNo",
+			"outerSysDescription" : "$!item.outerSysDescription",
+			"internalIp" : "$!item.internalIp",
+			"netAreaIp" : "$!item.netAreaIp",
+			"internetIp" : "$!item.internetIp",
+			"internetPort" : "$!item.internetPort",
+			"internalPort" : "$!item.internalPort",
+			"networkType" : "$!item.networkType",
+			"email" : "$!item.email",
+			"phone" : "$!item.phone",
+			"mobile" : "$!item.mobile",
+			"weixin" : "$!item.weixin",
+			"lastModifyOperator" : "$!item.lastModifyOperator",
+			"lastModifyTime" : "$!item.lastModifyTime",
+			"isValid" : "$!item.isValid"
+		}#if($!velocityCount < $!currentCount),#end
+		#end
+	]
+}

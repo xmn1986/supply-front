@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.trc.model.ActRuVariable">
+  <resultMap id="BaseResultMap" type="com.trc.model.ActRuVariable">
+    <id column="ID_" jdbcType="VARCHAR" property="id" />
+    <result column="REV_" jdbcType="INTEGER" property="rev" />
+    <result column="TYPE_" jdbcType="VARCHAR" property="type" />
+    <result column="NAME_" jdbcType="VARCHAR" property="name" />
+    <result column="EXECUTION_ID_" jdbcType="VARCHAR" property="executionId" />
+    <result column="PROC_INST_ID_" jdbcType="VARCHAR" property="procInstId" />
+    <result column="TASK_ID_" jdbcType="VARCHAR" property="taskId" />
+    <result column="BYTEARRAY_ID_" jdbcType="VARCHAR" property="bytearrayId" />
+    <result column="DOUBLE_" jdbcType="DOUBLE" property="double" />
+    <result column="LONG_" jdbcType="BIGINT" property="long" />
+    <result column="TEXT_" jdbcType="VARCHAR" property="text" />
+    <result column="TEXT2_" jdbcType="VARCHAR" property="text2" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID_, REV_, TYPE_, NAME_, EXECUTION_ID_, PROC_INST_ID_, TASK_ID_, BYTEARRAY_ID_, DOUBLE_, 
+    LONG_, TEXT_, TEXT2_
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from act_ru_variable
+    where ID_ = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from act_ru_variable
+    where ID_ = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.trc.model.ActRuVariable">
+    insert into act_ru_variable (ID_, REV_, TYPE_, 
+      NAME_, EXECUTION_ID_, PROC_INST_ID_, 
+      TASK_ID_, BYTEARRAY_ID_, DOUBLE_, 
+      LONG_, TEXT_, TEXT2_)
+    values (#{id,jdbcType=VARCHAR}, #{rev,jdbcType=INTEGER}, #{type,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{executionId,jdbcType=VARCHAR}, #{procInstId,jdbcType=VARCHAR}, 
+      #{taskId,jdbcType=VARCHAR}, #{bytearrayId,jdbcType=VARCHAR}, #{double,jdbcType=DOUBLE}, 
+      #{long,jdbcType=BIGINT}, #{text,jdbcType=VARCHAR}, #{text2,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.trc.model.ActRuVariable">
+    insert into act_ru_variable
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID_,
+      </if>
+      <if test="rev != null">
+        REV_,
+      </if>
+      <if test="type != null">
+        TYPE_,
+      </if>
+      <if test="name != null">
+        NAME_,
+      </if>
+      <if test="executionId != null">
+        EXECUTION_ID_,
+      </if>
+      <if test="procInstId != null">
+        PROC_INST_ID_,
+      </if>
+      <if test="taskId != null">
+        TASK_ID_,
+      </if>
+      <if test="bytearrayId != null">
+        BYTEARRAY_ID_,
+      </if>
+      <if test="double != null">
+        DOUBLE_,
+      </if>
+      <if test="long != null">
+        LONG_,
+      </if>
+      <if test="text != null">
+        TEXT_,
+      </if>
+      <if test="text2 != null">
+        TEXT2_,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="rev != null">
+        #{rev,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="executionId != null">
+        #{executionId,jdbcType=VARCHAR},
+      </if>
+      <if test="procInstId != null">
+        #{procInstId,jdbcType=VARCHAR},
+      </if>
+      <if test="taskId != null">
+        #{taskId,jdbcType=VARCHAR},
+      </if>
+      <if test="bytearrayId != null">
+        #{bytearrayId,jdbcType=VARCHAR},
+      </if>
+      <if test="double != null">
+        #{double,jdbcType=DOUBLE},
+      </if>
+      <if test="long != null">
+        #{long,jdbcType=BIGINT},
+      </if>
+      <if test="text != null">
+        #{text,jdbcType=VARCHAR},
+      </if>
+      <if test="text2 != null">
+        #{text2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.trc.model.ActRuVariable">
+    update act_ru_variable
+    <set>
+      <if test="rev != null">
+        REV_ = #{rev,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        TYPE_ = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        NAME_ = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="executionId != null">
+        EXECUTION_ID_ = #{executionId,jdbcType=VARCHAR},
+      </if>
+      <if test="procInstId != null">
+        PROC_INST_ID_ = #{procInstId,jdbcType=VARCHAR},
+      </if>
+      <if test="taskId != null">
+        TASK_ID_ = #{taskId,jdbcType=VARCHAR},
+      </if>
+      <if test="bytearrayId != null">
+        BYTEARRAY_ID_ = #{bytearrayId,jdbcType=VARCHAR},
+      </if>
+      <if test="double != null">
+        DOUBLE_ = #{double,jdbcType=DOUBLE},
+      </if>
+      <if test="long != null">
+        LONG_ = #{long,jdbcType=BIGINT},
+      </if>
+      <if test="text != null">
+        TEXT_ = #{text,jdbcType=VARCHAR},
+      </if>
+      <if test="text2 != null">
+        TEXT2_ = #{text2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID_ = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.trc.model.ActRuVariable">
+    update act_ru_variable
+    set REV_ = #{rev,jdbcType=INTEGER},
+      TYPE_ = #{type,jdbcType=VARCHAR},
+      NAME_ = #{name,jdbcType=VARCHAR},
+      EXECUTION_ID_ = #{executionId,jdbcType=VARCHAR},
+      PROC_INST_ID_ = #{procInstId,jdbcType=VARCHAR},
+      TASK_ID_ = #{taskId,jdbcType=VARCHAR},
+      BYTEARRAY_ID_ = #{bytearrayId,jdbcType=VARCHAR},
+      DOUBLE_ = #{double,jdbcType=DOUBLE},
+      LONG_ = #{long,jdbcType=BIGINT},
+      TEXT_ = #{text,jdbcType=VARCHAR},
+      TEXT2_ = #{text2,jdbcType=VARCHAR}
+    where ID_ = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

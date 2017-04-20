@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.trc.dao.DictTypeMapper">
+  <resultMap id="BaseResultMap" type="com.trc.model.DictType">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="outer_sys_no" jdbcType="VARCHAR" property="outerSysNo" />
+    <result column="type_no" jdbcType="VARCHAR" property="typeNo" />
+    <result column="type_name" jdbcType="VARCHAR" property="typeName" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="last_modify_operator" jdbcType="VARCHAR" property="lastModifyOperator" />
+    <result column="last_modify_time" jdbcType="DATE" property="lastModifyTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, outer_sys_no, type_no, type_name, description, last_modify_operator, last_modify_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from dict_type
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from dict_type
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.trc.model.DictType">
+    insert into dict_type (id, outer_sys_no, type_no, 
+      type_name, description, last_modify_operator, 
+      last_modify_time)
+    values (#{id,jdbcType=BIGINT}, #{outerSysNo,jdbcType=VARCHAR}, #{typeNo,jdbcType=VARCHAR}, 
+      #{typeName,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{lastModifyOperator,jdbcType=VARCHAR}, 
+      #{lastModifyTime,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.trc.model.DictType">
+    insert into dict_type
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="outerSysNo != null">
+        outer_sys_no,
+      </if>
+      <if test="typeNo != null">
+        type_no,
+      </if>
+      <if test="typeName != null">
+        type_name,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="lastModifyOperator != null">
+        last_modify_operator,
+      </if>
+      <if test="lastModifyTime != null">
+        last_modify_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="outerSysNo != null">
+        #{outerSysNo,jdbcType=VARCHAR},
+      </if>
+      <if test="typeNo != null">
+        #{typeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="typeName != null">
+        #{typeName,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifyOperator != null">
+        #{lastModifyOperator,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifyTime != null">
+        #{lastModifyTime,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.trc.model.DictType">
+    update dict_type
+    <set>
+      <if test="outerSysNo != null">
+        outer_sys_no = #{outerSysNo,jdbcType=VARCHAR},
+      </if>
+      <if test="typeNo != null">
+        type_no = #{typeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="typeName != null">
+        type_name = #{typeName,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifyOperator != null">
+        last_modify_operator = #{lastModifyOperator,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifyTime != null">
+        last_modify_time = #{lastModifyTime,jdbcType=DATE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.trc.model.DictType">
+    update dict_type
+    set outer_sys_no = #{outerSysNo,jdbcType=VARCHAR},
+      type_no = #{typeNo,jdbcType=VARCHAR},
+      type_name = #{typeName,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      last_modify_operator = #{lastModifyOperator,jdbcType=VARCHAR},
+      last_modify_time = #{lastModifyTime,jdbcType=DATE}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

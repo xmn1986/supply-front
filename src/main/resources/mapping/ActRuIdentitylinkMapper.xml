@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.trc.model.ActRuIdentitylink">
+  <resultMap id="BaseResultMap" type="com.trc.model.ActRuIdentitylink">
+    <id column="ID_" jdbcType="VARCHAR" property="id" />
+    <result column="REV_" jdbcType="INTEGER" property="rev" />
+    <result column="GROUP_ID_" jdbcType="VARCHAR" property="groupId" />
+    <result column="TYPE_" jdbcType="VARCHAR" property="type" />
+    <result column="USER_ID_" jdbcType="VARCHAR" property="userId" />
+    <result column="TASK_ID_" jdbcType="VARCHAR" property="taskId" />
+    <result column="PROC_INST_ID_" jdbcType="VARCHAR" property="procInstId" />
+    <result column="PROC_DEF_ID_" jdbcType="VARCHAR" property="procDefId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID_, REV_, GROUP_ID_, TYPE_, USER_ID_, TASK_ID_, PROC_INST_ID_, PROC_DEF_ID_
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from act_ru_identitylink
+    where ID_ = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from act_ru_identitylink
+    where ID_ = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.trc.model.ActRuIdentitylink">
+    insert into act_ru_identitylink (ID_, REV_, GROUP_ID_, 
+      TYPE_, USER_ID_, TASK_ID_, 
+      PROC_INST_ID_, PROC_DEF_ID_)
+    values (#{id,jdbcType=VARCHAR}, #{rev,jdbcType=INTEGER}, #{groupId,jdbcType=VARCHAR}, 
+      #{type,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{taskId,jdbcType=VARCHAR}, 
+      #{procInstId,jdbcType=VARCHAR}, #{procDefId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.trc.model.ActRuIdentitylink">
+    insert into act_ru_identitylink
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID_,
+      </if>
+      <if test="rev != null">
+        REV_,
+      </if>
+      <if test="groupId != null">
+        GROUP_ID_,
+      </if>
+      <if test="type != null">
+        TYPE_,
+      </if>
+      <if test="userId != null">
+        USER_ID_,
+      </if>
+      <if test="taskId != null">
+        TASK_ID_,
+      </if>
+      <if test="procInstId != null">
+        PROC_INST_ID_,
+      </if>
+      <if test="procDefId != null">
+        PROC_DEF_ID_,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="rev != null">
+        #{rev,jdbcType=INTEGER},
+      </if>
+      <if test="groupId != null">
+        #{groupId,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="taskId != null">
+        #{taskId,jdbcType=VARCHAR},
+      </if>
+      <if test="procInstId != null">
+        #{procInstId,jdbcType=VARCHAR},
+      </if>
+      <if test="procDefId != null">
+        #{procDefId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.trc.model.ActRuIdentitylink">
+    update act_ru_identitylink
+    <set>
+      <if test="rev != null">
+        REV_ = #{rev,jdbcType=INTEGER},
+      </if>
+      <if test="groupId != null">
+        GROUP_ID_ = #{groupId,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        TYPE_ = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        USER_ID_ = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="taskId != null">
+        TASK_ID_ = #{taskId,jdbcType=VARCHAR},
+      </if>
+      <if test="procInstId != null">
+        PROC_INST_ID_ = #{procInstId,jdbcType=VARCHAR},
+      </if>
+      <if test="procDefId != null">
+        PROC_DEF_ID_ = #{procDefId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID_ = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.trc.model.ActRuIdentitylink">
+    update act_ru_identitylink
+    set REV_ = #{rev,jdbcType=INTEGER},
+      GROUP_ID_ = #{groupId,jdbcType=VARCHAR},
+      TYPE_ = #{type,jdbcType=VARCHAR},
+      USER_ID_ = #{userId,jdbcType=VARCHAR},
+      TASK_ID_ = #{taskId,jdbcType=VARCHAR},
+      PROC_INST_ID_ = #{procInstId,jdbcType=VARCHAR},
+      PROC_DEF_ID_ = #{procDefId,jdbcType=VARCHAR}
+    where ID_ = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

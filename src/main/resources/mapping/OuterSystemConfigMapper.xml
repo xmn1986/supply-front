@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.trc.model.OuterSystemConfig">
+  <resultMap id="BaseResultMap" type="com.trc.model.OuterSystemConfig">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <id column="outer_sys_no" jdbcType="VARCHAR" property="outersSysNo" />
+    <result column="outer_sys_name" jdbcType="VARCHAR" property="outerSysName" />
+    <result column="outer_sys_description" jdbcType="VARCHAR" property="outerSysDescription" />
+    <result column="internal_ip" jdbcType="VARCHAR" property="internalIp" />
+    <result column="net_area_ip" jdbcType="VARCHAR" property="netAreaIp" />
+    <result column="internet_ip" jdbcType="VARCHAR" property="internetIp" />
+    <result column="internet_port" jdbcType="BIGINT" property="internetPort" />
+    <result column="internal_port" jdbcType="BIGINT" property="internalPort" />
+    <result column="network_type" jdbcType="VARCHAR" property="networkType" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="weixin" jdbcType="VARCHAR" property="weixin" />
+    <result column="last_modify_operator" jdbcType="VARCHAR" property="lastModifyOperator" />
+    <result column="last_modify_time" jdbcType="DATE" property="lastModifyTime" />
+    <result column="is_valid" jdbcType="VARCHAR" property="isValid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, outer_sys_no, outer_sys_name, outer_sys_description, internal_ip, net_area_ip, 
+    internet_ip, internet_port, internal_port, network_type, email, phone, mobile, weixin, 
+    last_modify_operator, last_modify_time, is_valid
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="com.trc.model.OuterSystemConfig" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from outer_system_config
+    where id = #{id,jdbcType=BIGINT}
+      and outer_sys_no = #{outersSysNo,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.trc.model.OuterSystemConfig">
+    delete from outer_system_config
+    where id = #{id,jdbcType=BIGINT}
+      and outer_sys_no = #{outersSysNo,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.trc.model.OuterSystemConfig">
+    insert into outer_system_config (id, outer_sys_no, outer_sys_name, 
+      outer_sys_description, internal_ip, net_area_ip, 
+      internet_ip, internet_port, internal_port, 
+      network_type, email, phone, 
+      mobile, weixin, last_modify_operator, 
+      last_modify_time, is_valid)
+    values (#{id,jdbcType=BIGINT}, #{outersSysNo,jdbcType=VARCHAR}, #{outerSysName,jdbcType=VARCHAR}, 
+      #{outerSysDescription,jdbcType=VARCHAR}, #{internalIp,jdbcType=VARCHAR}, #{netAreaIp,jdbcType=VARCHAR}, 
+      #{internetIp,jdbcType=VARCHAR}, #{internetPort,jdbcType=BIGINT}, #{internalPort,jdbcType=BIGINT}, 
+      #{networkType,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{mobile,jdbcType=VARCHAR}, #{weixin,jdbcType=VARCHAR}, #{lastModifyOperator,jdbcType=VARCHAR}, 
+      #{lastModifyTime,jdbcType=DATE}, #{isValid,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.trc.model.OuterSystemConfig">
+    insert into outer_system_config
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="outersSysNo != null">
+        outer_sys_no,
+      </if>
+      <if test="outerSysName != null">
+        outer_sys_name,
+      </if>
+      <if test="outerSysDescription != null">
+        outer_sys_description,
+      </if>
+      <if test="internalIp != null">
+        internal_ip,
+      </if>
+      <if test="netAreaIp != null">
+        net_area_ip,
+      </if>
+      <if test="internetIp != null">
+        internet_ip,
+      </if>
+      <if test="internetPort != null">
+        internet_port,
+      </if>
+      <if test="internalPort != null">
+        internal_port,
+      </if>
+      <if test="networkType != null">
+        network_type,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="mobile != null">
+        mobile,
+      </if>
+      <if test="weixin != null">
+        weixin,
+      </if>
+      <if test="lastModifyOperator != null">
+        last_modify_operator,
+      </if>
+      <if test="lastModifyTime != null">
+        last_modify_time,
+      </if>
+      <if test="isValid != null">
+        is_valid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="outersSysNo != null">
+        #{outersSysNo,jdbcType=VARCHAR},
+      </if>
+      <if test="outerSysName != null">
+        #{outerSysName,jdbcType=VARCHAR},
+      </if>
+      <if test="outerSysDescription != null">
+        #{outerSysDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="internalIp != null">
+        #{internalIp,jdbcType=VARCHAR},
+      </if>
+      <if test="netAreaIp != null">
+        #{netAreaIp,jdbcType=VARCHAR},
+      </if>
+      <if test="internetIp != null">
+        #{internetIp,jdbcType=VARCHAR},
+      </if>
+      <if test="internetPort != null">
+        #{internetPort,jdbcType=BIGINT},
+      </if>
+      <if test="internalPort != null">
+        #{internalPort,jdbcType=BIGINT},
+      </if>
+      <if test="networkType != null">
+        #{networkType,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="weixin != null">
+        #{weixin,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifyOperator != null">
+        #{lastModifyOperator,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifyTime != null">
+        #{lastModifyTime,jdbcType=DATE},
+      </if>
+      <if test="isValid != null">
+        #{isValid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.trc.model.OuterSystemConfig">
+    update outer_system_config
+    <set>
+      <if test="outerSysName != null">
+        outer_sys_name = #{outerSysName,jdbcType=VARCHAR},
+      </if>
+      <if test="outerSysDescription != null">
+        outer_sys_description = #{outerSysDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="internalIp != null">
+        internal_ip = #{internalIp,jdbcType=VARCHAR},
+      </if>
+      <if test="netAreaIp != null">
+        net_area_ip = #{netAreaIp,jdbcType=VARCHAR},
+      </if>
+      <if test="internetIp != null">
+        internet_ip = #{internetIp,jdbcType=VARCHAR},
+      </if>
+      <if test="internetPort != null">
+        internet_port = #{internetPort,jdbcType=BIGINT},
+      </if>
+      <if test="internalPort != null">
+        internal_port = #{internalPort,jdbcType=BIGINT},
+      </if>
+      <if test="networkType != null">
+        network_type = #{networkType,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="weixin != null">
+        weixin = #{weixin,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifyOperator != null">
+        last_modify_operator = #{lastModifyOperator,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifyTime != null">
+        last_modify_time = #{lastModifyTime,jdbcType=DATE},
+      </if>
+      <if test="isValid != null">
+        is_valid = #{isValid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+      and outer_sys_no = #{outersSysNo,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.trc.model.OuterSystemConfig">
+    update outer_system_config
+    set outer_sys_name = #{outerSysName,jdbcType=VARCHAR},
+      outer_sys_description = #{outerSysDescription,jdbcType=VARCHAR},
+      internal_ip = #{internalIp,jdbcType=VARCHAR},
+      net_area_ip = #{netAreaIp,jdbcType=VARCHAR},
+      internet_ip = #{internetIp,jdbcType=VARCHAR},
+      internet_port = #{internetPort,jdbcType=BIGINT},
+      internal_port = #{internalPort,jdbcType=BIGINT},
+      network_type = #{networkType,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      weixin = #{weixin,jdbcType=VARCHAR},
+      last_modify_operator = #{lastModifyOperator,jdbcType=VARCHAR},
+      last_modify_time = #{lastModifyTime,jdbcType=DATE},
+      is_valid = #{isValid,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+      and outer_sys_no = #{outersSysNo,jdbcType=VARCHAR}
+  </update>
+  
+  <resultMap id="pageCount" type="java.lang.Integer">  
+    <result column="totalCount" property="totalCount" jdbcType="INTEGER" />  
+  </resultMap>
+  
+  <select id="totalCount" resultMap="pageCount">
+    	select count(ID) as totalCount from outer_system_config where is_valid = '1'
+  </select>
+  
+  <select id="pagination" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from outer_system_config
+    where is_valid = '1'
+    LIMIT #{start},#{limit}
+  </select>
+  
+  <!-- 查询所有外部系统编号和名称 -->
+  <select id="selectAllOuterSys" resultType="java.util.Map">
+    select outers_sys_no outerSysNo, outer_sys_name outerSysName from outer_system_config
+  </select>
+  
+</mapper>

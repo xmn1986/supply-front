@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.trc.model.ActHiActinst">
+  <resultMap id="BaseResultMap" type="com.trc.model.ActHiActinst">
+    <id column="ID_" jdbcType="VARCHAR" property="id" />
+    <result column="PROC_DEF_ID_" jdbcType="VARCHAR" property="procDefId" />
+    <result column="PROC_INST_ID_" jdbcType="VARCHAR" property="procInstId" />
+    <result column="EXECUTION_ID_" jdbcType="VARCHAR" property="executionId" />
+    <result column="ACT_ID_" jdbcType="VARCHAR" property="actId" />
+    <result column="TASK_ID_" jdbcType="VARCHAR" property="taskId" />
+    <result column="CALL_PROC_INST_ID_" jdbcType="VARCHAR" property="callProcInstId" />
+    <result column="ACT_NAME_" jdbcType="VARCHAR" property="actName" />
+    <result column="ACT_TYPE_" jdbcType="VARCHAR" property="actType" />
+    <result column="ASSIGNEE_" jdbcType="VARCHAR" property="assignee" />
+    <result column="START_TIME_" jdbcType="TIMESTAMP" property="startTime" />
+    <result column="END_TIME_" jdbcType="TIMESTAMP" property="endTime" />
+    <result column="DURATION_" jdbcType="BIGINT" property="duration" />
+    <result column="TENANT_ID_" jdbcType="VARCHAR" property="tenantId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID_, PROC_DEF_ID_, PROC_INST_ID_, EXECUTION_ID_, ACT_ID_, TASK_ID_, CALL_PROC_INST_ID_, 
+    ACT_NAME_, ACT_TYPE_, ASSIGNEE_, START_TIME_, END_TIME_, DURATION_, TENANT_ID_
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from act_hi_actinst
+    where ID_ = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from act_hi_actinst
+    where ID_ = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.trc.model.ActHiActinst">
+    insert into act_hi_actinst (ID_, PROC_DEF_ID_, PROC_INST_ID_, 
+      EXECUTION_ID_, ACT_ID_, TASK_ID_, 
+      CALL_PROC_INST_ID_, ACT_NAME_, ACT_TYPE_, 
+      ASSIGNEE_, START_TIME_, END_TIME_, 
+      DURATION_, TENANT_ID_)
+    values (#{id,jdbcType=VARCHAR}, #{procDefId,jdbcType=VARCHAR}, #{procInstId,jdbcType=VARCHAR}, 
+      #{executionId,jdbcType=VARCHAR}, #{actId,jdbcType=VARCHAR}, #{taskId,jdbcType=VARCHAR}, 
+      #{callProcInstId,jdbcType=VARCHAR}, #{actName,jdbcType=VARCHAR}, #{actType,jdbcType=VARCHAR}, 
+      #{assignee,jdbcType=VARCHAR}, #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, 
+      #{duration,jdbcType=BIGINT}, #{tenantId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.trc.model.ActHiActinst">
+    insert into act_hi_actinst
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID_,
+      </if>
+      <if test="procDefId != null">
+        PROC_DEF_ID_,
+      </if>
+      <if test="procInstId != null">
+        PROC_INST_ID_,
+      </if>
+      <if test="executionId != null">
+        EXECUTION_ID_,
+      </if>
+      <if test="actId != null">
+        ACT_ID_,
+      </if>
+      <if test="taskId != null">
+        TASK_ID_,
+      </if>
+      <if test="callProcInstId != null">
+        CALL_PROC_INST_ID_,
+      </if>
+      <if test="actName != null">
+        ACT_NAME_,
+      </if>
+      <if test="actType != null">
+        ACT_TYPE_,
+      </if>
+      <if test="assignee != null">
+        ASSIGNEE_,
+      </if>
+      <if test="startTime != null">
+        START_TIME_,
+      </if>
+      <if test="endTime != null">
+        END_TIME_,
+      </if>
+      <if test="duration != null">
+        DURATION_,
+      </if>
+      <if test="tenantId != null">
+        TENANT_ID_,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="procDefId != null">
+        #{procDefId,jdbcType=VARCHAR},
+      </if>
+      <if test="procInstId != null">
+        #{procInstId,jdbcType=VARCHAR},
+      </if>
+      <if test="executionId != null">
+        #{executionId,jdbcType=VARCHAR},
+      </if>
+      <if test="actId != null">
+        #{actId,jdbcType=VARCHAR},
+      </if>
+      <if test="taskId != null">
+        #{taskId,jdbcType=VARCHAR},
+      </if>
+      <if test="callProcInstId != null">
+        #{callProcInstId,jdbcType=VARCHAR},
+      </if>
+      <if test="actName != null">
+        #{actName,jdbcType=VARCHAR},
+      </if>
+      <if test="actType != null">
+        #{actType,jdbcType=VARCHAR},
+      </if>
+      <if test="assignee != null">
+        #{assignee,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null">
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="duration != null">
+        #{duration,jdbcType=BIGINT},
+      </if>
+      <if test="tenantId != null">
+        #{tenantId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.trc.model.ActHiActinst">
+    update act_hi_actinst
+    <set>
+      <if test="procDefId != null">
+        PROC_DEF_ID_ = #{procDefId,jdbcType=VARCHAR},
+      </if>
+      <if test="procInstId != null">
+        PROC_INST_ID_ = #{procInstId,jdbcType=VARCHAR},
+      </if>
+      <if test="executionId != null">
+        EXECUTION_ID_ = #{executionId,jdbcType=VARCHAR},
+      </if>
+      <if test="actId != null">
+        ACT_ID_ = #{actId,jdbcType=VARCHAR},
+      </if>
+      <if test="taskId != null">
+        TASK_ID_ = #{taskId,jdbcType=VARCHAR},
+      </if>
+      <if test="callProcInstId != null">
+        CALL_PROC_INST_ID_ = #{callProcInstId,jdbcType=VARCHAR},
+      </if>
+      <if test="actName != null">
+        ACT_NAME_ = #{actName,jdbcType=VARCHAR},
+      </if>
+      <if test="actType != null">
+        ACT_TYPE_ = #{actType,jdbcType=VARCHAR},
+      </if>
+      <if test="assignee != null">
+        ASSIGNEE_ = #{assignee,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null">
+        START_TIME_ = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        END_TIME_ = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="duration != null">
+        DURATION_ = #{duration,jdbcType=BIGINT},
+      </if>
+      <if test="tenantId != null">
+        TENANT_ID_ = #{tenantId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID_ = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.trc.model.ActHiActinst">
+    update act_hi_actinst
+    set PROC_DEF_ID_ = #{procDefId,jdbcType=VARCHAR},
+      PROC_INST_ID_ = #{procInstId,jdbcType=VARCHAR},
+      EXECUTION_ID_ = #{executionId,jdbcType=VARCHAR},
+      ACT_ID_ = #{actId,jdbcType=VARCHAR},
+      TASK_ID_ = #{taskId,jdbcType=VARCHAR},
+      CALL_PROC_INST_ID_ = #{callProcInstId,jdbcType=VARCHAR},
+      ACT_NAME_ = #{actName,jdbcType=VARCHAR},
+      ACT_TYPE_ = #{actType,jdbcType=VARCHAR},
+      ASSIGNEE_ = #{assignee,jdbcType=VARCHAR},
+      START_TIME_ = #{startTime,jdbcType=TIMESTAMP},
+      END_TIME_ = #{endTime,jdbcType=TIMESTAMP},
+      DURATION_ = #{duration,jdbcType=BIGINT},
+      TENANT_ID_ = #{tenantId,jdbcType=VARCHAR}
+    where ID_ = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

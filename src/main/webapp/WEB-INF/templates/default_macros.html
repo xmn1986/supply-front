@@ -1,0 +1,208 @@
+
+###日期格式化
+#macro(dateToString $date $formate)$!dateUtils.dateToString($!date,$formate)#end
+
+
+
+##根据枚举类生成下拉列表
+#macro(mm_select_list $parameters $enum)
+	
+	#set($id="$!parameters.id")
+	#if("$id"=="")
+		#set($id=$parameters.name)
+	#end
+		
+	#set($data=$!enum)
+	<select name="$parameters.name" id="$id" #if(${parameters.onchange}) onchange="${parameters.onchange}();"  #end #if("$!parameters.cssClass" != "") class="$!parameters.cssClass" #else class="input-normal" #end  #if("$!parameters.data-rules" != "") data-rules="$!parameters.data-rules" #end #if("$!parameters.data-messages" != "") data-messages="$!parameters.data-messages" #end>
+		#if("$!parameters.firstOption" != "")
+			<option value="$!parameters.firstOption.get(0)">$!parameters.firstOption.get(1)</option>
+		#else
+			<option value="">请选择</option>
+		#end	
+		
+		#foreach($option in $data)
+			#set ($A="$") 
+			#set ($B="!")
+			#set ($C1="{")
+			#set ($C2="}")
+			#set ($D1="option.")			
+			#set($K = $!parameters.optionValue)
+			#set($V = $!parameters.optionText)
+			<option value="#evaluate("$A$B$C1$D1$K$C2")" title="#evaluate("$A$B$C1$D1$V$C2")">#evaluate("$A$B$C1$D1$V$C2")</option>
+		#end
+	</select>		
+	#foreach($option in $data)
+		#set ($A="$")
+		#set ($B="!")
+		#set ($C1="{")
+		#set ($C2="}")
+		#set ($D1="option.")			
+		#set($K = $!parameters.optionValue)
+		
+		#foreach($code in $!parameters.hiddenCode)
+    	#set($V = $code)
+    		<textarea style="display:none" id="${code}_#evaluate("$A$B$C1$D1$K$C2")" name="${code}_#evaluate("$A$B$C1$D1$K$C2")">#evaluate("$A$B$C1$D1$V$C2")</textarea>
+    	#end
+	#end
+#end
+
+
+
+##根据枚举类生成下拉列表(默认选中)
+#macro(mm_select_list_default_selected $parameters $enum $val)
+ 
+ #set($id="$!parameters.id")
+ #if("$id"=="")
+  #set($id=$parameters.name)
+ #end
+ 
+ #set($data=$!enum)
+ <select name="$parameters.name" id="$id" #if(${parameters.onchange}) onchange="${parameters.onchange}();"  #end #if("$!parameters.cssClass" != "") class="$!parameters.cssClass" #else class="input-normal" #end  #if("$!parameters.data-rules" != "") data-rules="$!parameters.data-rules" #end #if("$!parameters.data-messages" != "") data-messages="$!parameters.data-messages" #end>
+  #if("$!parameters.firstOption" != "")
+   <option value="$!parameters.firstOption.get(0)">$!parameters.firstOption.get(1)</option>
+  #else
+   <option value="">请选择</option>
+  #end
+ 
+  #foreach($option in $data)
+   #set ($A="$")
+   #set ($B="!")
+   #set ($C1="{")
+   #set ($C2="}")
+   #set ($D1="option.")
+   #set($K = $!parameters.optionValue)
+   #set($V = $!parameters.optionText)
+   #if($option.code == $!val)
+    <option value="#evaluate("$A$B$C1$D1$K$C2")" selected = "selected">#evaluate("$A$B$C1$D1$V$C2")</option>
+   #else
+    <option value="#evaluate("$A$B$C1$D1$K$C2")">#evaluate("$A$B$C1$D1$V$C2")</option>
+   #end
+  #end
+ </select>
+ #foreach($option in $data)
+  #set ($A="$")
+  #set ($B="!")
+  #set ($C1="{")
+  #set ($C2="}")
+  #set ($D1="option.")
+  #set($K = $!parameters.optionValue)
+ 
+  #foreach($code in $!parameters.hiddenCode)
+     #set($V = $code)
+      <textarea style="display:none" id="${code}_#evaluate("$A$B$C1$D1$K$C2")" name="${code}_#evaluate("$A$B$C1$D1$K$C2")">#evaluate("$A$B$C1$D1$V$C2")</textarea>
+     #end
+ #end
+#end
+
+##根据枚举类生成下拉列表(默认选中)
+#macro(mm_select_list_default_selected $parameters $enum $val)
+ 
+ #set($id="$!parameters.id")
+ #if("$id"=="")
+  #set($id=$parameters.name)
+ #end
+ 
+ #set($data=$!enum)
+ <select name="$parameters.name" id="$id" #if(${parameters.onchange}) onchange="${parameters.onchange}();"  #end #if("$!parameters.cssClass" != "") class="$!parameters.cssClass" #else class="input-normal" #end  #if("$!parameters.data-rules" != "") data-rules="$!parameters.data-rules" #end #if("$!parameters.data-messages" != "") data-messages="$!parameters.data-messages" #end>
+  #if("$!parameters.firstOption" != "")
+   <option value="$!parameters.firstOption.get(0)">$!parameters.firstOption.get(1)</option>
+  #else
+   <option value="">请选择</option>
+  #end
+ 
+  #foreach($option in $data)
+   #set ($A="$")
+   #set ($B="!")
+   #set ($C1="{")
+   #set ($C2="}")
+   #set ($D1="option.")
+   #set($K = $!parameters.optionValue)
+   #set($V = $!parameters.optionText)
+   #if($option.code == $!val)
+    <option value="#evaluate("$A$B$C1$D1$K$C2")" selected = "selected">#evaluate("$A$B$C1$D1$V$C2")</option>
+   #else
+    <option value="#evaluate("$A$B$C1$D1$K$C2")">#evaluate("$A$B$C1$D1$V$C2")</option>
+   #end
+  #end
+ </select>
+ #foreach($option in $data)
+  #set ($A="$")
+  #set ($B="!")
+  #set ($C1="{")
+  #set ($C2="}")
+  #set ($D1="option.")
+  #set($K = $!parameters.optionValue)
+ 
+  #foreach($code in $!parameters.hiddenCode)
+     #set($V = $code)
+      <textarea style="display:none" id="${code}_#evaluate("$A$B$C1$D1$K$C2")" name="${code}_#evaluate("$A$B$C1$D1$K$C2")">#evaluate("$A$B$C1$D1$V$C2")</textarea>
+     #end
+ #end
+#end
+
+##根据枚举类生成下拉列表(默认选中)
+#macro(mm_select_list_default_selected_two $parameters $enum $val)
+ 
+ #set($id="$!parameters.id")
+ #if("$id"=="")
+  #set($id=$parameters.name)
+ #end
+ 
+ #set($data=$!enum)
+ <select name="$parameters.name" id="$id" #if(${parameters.onchange}) onchange="${parameters.onchange}();"  #end #if("$!parameters.cssClass" != "") class="$!parameters.cssClass" #else class="input-normal" #end  #if("$!parameters.data-rules" != "") data-rules="$!parameters.data-rules" #end #if("$!parameters.data-messages" != "") data-messages="$!parameters.data-messages" #end>
+  #if("$!parameters.firstOption" != "")
+   <option value="$!parameters.firstOption.get(0)">$!parameters.firstOption.get(1)</option>
+  #else
+   <option value="">请选择</option>
+  #end
+ 
+  #foreach($option in $data)
+   #set ($A="$")
+   #set ($B="!")
+   #set ($C1="{")
+   #set ($C2="}")
+   #set ($D1="option.")
+   #set($K = $!parameters.optionValue)
+   #set($V = $!parameters.optionText)
+   #if($option.deptId == $!val)
+    <option value="#evaluate("$A$B$C1$D1$K$C2")" selected = "selected">#evaluate("$A$B$C1$D1$V$C2")</option>
+   #else
+    <option value="#evaluate("$A$B$C1$D1$K$C2")">#evaluate("$A$B$C1$D1$V$C2")</option>
+   #end
+  #end
+ </select>
+ #foreach($option in $data)
+  #set ($A="$")
+  #set ($B="!")
+  #set ($C1="{")
+  #set ($C2="}")
+  #set ($D1="option.")
+  #set($K = $!parameters.optionValue)
+ 
+  #foreach($code in $!parameters.hiddenCode)
+     #set($V = $code)
+      <textarea style="display:none" id="${code}_#evaluate("$A$B$C1$D1$K$C2")" name="${code}_#evaluate("$A$B$C1$D1$K$C2")">#evaluate("$A$B$C1$D1$V$C2")</textarea>
+     #end
+ #end
+#end
+
+
+##数据字典枚举翻译(针对枚举定义：(String code, String name) )
+#macro(translateEnum $enum $data)#set($bak = $!data )#foreach($item in $enum)#set($code = $!item.getCode())#if("$!bak" == "$!code")$!item.getName()#end#end#end
+
+##根据身份证获取性别:女, 男
+#macro(Getsex $certId)$!commonPullUtil.getSex($certId)#end
+
+##判断是否拥有角色
+##roleCode:角色编码
+##roleStr:角色字符串,多个用","分割
+#macro(hasRole $roleCode $roleStr)
+	#set($result = "1")
+	#set ($roleArray = $roleStr.split(","))
+	#foreach($code in $!roleArray)
+		#if($roleCode == $code)
+			#set($result = "0")
+		#end
+	#end
+	$!result
+#end

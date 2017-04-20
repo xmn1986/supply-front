@@ -1,0 +1,27 @@
+#set($layout = "./layout/null.html")
+{
+	"results" : $!results,
+	"rows": [
+		#foreach($item in $!rows)
+		{
+		    "taskId" : "$!item.taskId",
+			"name" : "$!item.name",
+			"processDefinitionId" : "$!item.processDefinitionId",
+			"processInstanceId" : "$!item.processInstanceId",
+			"taskDefinitionKey" : "$!item.taskDefinitionKey",
+			"description" : "$!item.description",
+			"category" : "$!item.category",
+			"owner" : "$!item.owner",
+			"assignee" : "$!item.assignee",
+			"executionId" : "$!item.executionId",
+			"createTime" : "$!item.createTime",
+			"dueDate" : "$!item.dueDate",
+			"suspended" : "$!item.suspended",
+			"parentTaskId" : "$!item.parentTaskId",
+			"tenantId" : "$!item.tenantId",
+			"formKey" : "$!item.formKey",
+			"delegationState" : "$!item.delegationState"
+		}#if($!velocityCount < $!currentCount),#end
+		#end
+	]
+}

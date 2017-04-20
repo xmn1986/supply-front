@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.trc.model.SystemErrorLog">
+  <resultMap id="BaseResultMap" type="com.trc.model.SystemErrorLog">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="error_type" jdbcType="VARCHAR" property="errorType" />
+    <result column="error_msg" jdbcType="VARCHAR" property="errorMsg" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="error_level" jdbcType="VARCHAR" property="errorLevel" />
+    <result column="last_modify_operator" jdbcType="VARCHAR" property="lastModifyOperator" />
+    <result column="last_modify_time" jdbcType="DATE" property="lastModifyTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, error_type, error_msg, status, error_level, last_modify_operator, last_modify_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from system_error_log
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from system_error_log
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.trc.model.SystemErrorLog">
+    insert into system_error_log (id, error_type, error_msg, 
+      status, error_level, last_modify_operator, 
+      last_modify_time)
+    values (#{id,jdbcType=BIGINT}, #{errorType,jdbcType=VARCHAR}, #{errorMsg,jdbcType=VARCHAR}, 
+      #{status,jdbcType=VARCHAR}, #{errorLevel,jdbcType=VARCHAR}, #{lastModifyOperator,jdbcType=VARCHAR}, 
+      #{lastModifyTime,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.trc.model.SystemErrorLog">
+    insert into system_error_log
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="errorType != null">
+        error_type,
+      </if>
+      <if test="errorMsg != null">
+        error_msg,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="errorLevel != null">
+        error_level,
+      </if>
+      <if test="lastModifyOperator != null">
+        last_modify_operator,
+      </if>
+      <if test="lastModifyTime != null">
+        last_modify_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="errorType != null">
+        #{errorType,jdbcType=VARCHAR},
+      </if>
+      <if test="errorMsg != null">
+        #{errorMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="errorLevel != null">
+        #{errorLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifyOperator != null">
+        #{lastModifyOperator,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifyTime != null">
+        #{lastModifyTime,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.trc.model.SystemErrorLog">
+    update system_error_log
+    <set>
+      <if test="errorType != null">
+        error_type = #{errorType,jdbcType=VARCHAR},
+      </if>
+      <if test="errorMsg != null">
+        error_msg = #{errorMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="errorLevel != null">
+        error_level = #{errorLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifyOperator != null">
+        last_modify_operator = #{lastModifyOperator,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifyTime != null">
+        last_modify_time = #{lastModifyTime,jdbcType=DATE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.trc.model.SystemErrorLog">
+    update system_error_log
+    set error_type = #{errorType,jdbcType=VARCHAR},
+      error_msg = #{errorMsg,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      error_level = #{errorLevel,jdbcType=VARCHAR},
+      last_modify_operator = #{lastModifyOperator,jdbcType=VARCHAR},
+      last_modify_time = #{lastModifyTime,jdbcType=DATE}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

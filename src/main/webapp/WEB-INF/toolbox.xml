@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+ <toolbox>  
+   	<!-- <tool>
+        <key>dateUtil</key>
+        <scope>request</scope>
+        <class>com.hoo.util.DateUtils</class>
+    </tool>
+    <tool>
+        <key>commonPullUtil</key>
+        <scope>request</scope>
+        <class>com.hoo.util.CommonPullUtil</class>
+    </tool> -->
+    
+</toolbox>

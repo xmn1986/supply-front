@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="trc.com.trc.model.ActEvtLog">
+  <resultMap id="BaseResultMap" type="com.trc.model.ActEvtLog">
+    <id column="LOG_NR_" jdbcType="BIGINT" property="logNr" />
+    <result column="TYPE_" jdbcType="VARCHAR" property="type" />
+    <result column="PROC_DEF_ID_" jdbcType="VARCHAR" property="procDefId" />
+    <result column="PROC_INST_ID_" jdbcType="VARCHAR" property="procInstId" />
+    <result column="EXECUTION_ID_" jdbcType="VARCHAR" property="executionId" />
+    <result column="TASK_ID_" jdbcType="VARCHAR" property="taskId" />
+    <result column="TIME_STAMP_" jdbcType="TIMESTAMP" property="timeStamp" />
+    <result column="USER_ID_" jdbcType="VARCHAR" property="userId" />
+    <result column="LOCK_OWNER_" jdbcType="VARCHAR" property="lockOwner" />
+    <result column="LOCK_TIME_" jdbcType="TIMESTAMP" property="lockTime" />
+    <result column="IS_PROCESSED_" jdbcType="TINYINT" property="isProcessed" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.trc.model.ActEvtLog">
+    <result column="DATA_" jdbcType="LONGVARBINARY" property="data" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    LOG_NR_, TYPE_, PROC_DEF_ID_, PROC_INST_ID_, EXECUTION_ID_, TASK_ID_, TIME_STAMP_, 
+    USER_ID_, LOCK_OWNER_, LOCK_TIME_, IS_PROCESSED_
+  </sql>
+  <sql id="Blob_Column_List">
+    DATA_
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from act_evt_log
+    where LOG_NR_ = #{logNr,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from act_evt_log
+    where LOG_NR_ = #{logNr,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.trc.model.ActEvtLog">
+    insert into act_evt_log (LOG_NR_, TYPE_, PROC_DEF_ID_, 
+      PROC_INST_ID_, EXECUTION_ID_, TASK_ID_, 
+      TIME_STAMP_, USER_ID_, LOCK_OWNER_, 
+      LOCK_TIME_, IS_PROCESSED_, DATA_
+      )
+    values (#{logNr,jdbcType=BIGINT}, #{type,jdbcType=VARCHAR}, #{procDefId,jdbcType=VARCHAR}, 
+      #{procInstId,jdbcType=VARCHAR}, #{executionId,jdbcType=VARCHAR}, #{taskId,jdbcType=VARCHAR}, 
+      #{timeStamp,jdbcType=TIMESTAMP}, #{userId,jdbcType=VARCHAR}, #{lockOwner,jdbcType=VARCHAR}, 
+      #{lockTime,jdbcType=TIMESTAMP}, #{isProcessed,jdbcType=TINYINT}, #{data,jdbcType=LONGVARBINARY}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.trc.model.ActEvtLog">
+    insert into act_evt_log
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="logNr != null">
+        LOG_NR_,
+      </if>
+      <if test="type != null">
+        TYPE_,
+      </if>
+      <if test="procDefId != null">
+        PROC_DEF_ID_,
+      </if>
+      <if test="procInstId != null">
+        PROC_INST_ID_,
+      </if>
+      <if test="executionId != null">
+        EXECUTION_ID_,
+      </if>
+      <if test="taskId != null">
+        TASK_ID_,
+      </if>
+      <if test="timeStamp != null">
+        TIME_STAMP_,
+      </if>
+      <if test="userId != null">
+        USER_ID_,
+      </if>
+      <if test="lockOwner != null">
+        LOCK_OWNER_,
+      </if>
+      <if test="lockTime != null">
+        LOCK_TIME_,
+      </if>
+      <if test="isProcessed != null">
+        IS_PROCESSED_,
+      </if>
+      <if test="data != null">
+        DATA_,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="logNr != null">
+        #{logNr,jdbcType=BIGINT},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="procDefId != null">
+        #{procDefId,jdbcType=VARCHAR},
+      </if>
+      <if test="procInstId != null">
+        #{procInstId,jdbcType=VARCHAR},
+      </if>
+      <if test="executionId != null">
+        #{executionId,jdbcType=VARCHAR},
+      </if>
+      <if test="taskId != null">
+        #{taskId,jdbcType=VARCHAR},
+      </if>
+      <if test="timeStamp != null">
+        #{timeStamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="lockOwner != null">
+        #{lockOwner,jdbcType=VARCHAR},
+      </if>
+      <if test="lockTime != null">
+        #{lockTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isProcessed != null">
+        #{isProcessed,jdbcType=TINYINT},
+      </if>
+      <if test="data != null">
+        #{data,jdbcType=LONGVARBINARY},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.trc.model.ActEvtLog">
+    update act_evt_log
+    <set>
+      <if test="type != null">
+        TYPE_ = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="procDefId != null">
+        PROC_DEF_ID_ = #{procDefId,jdbcType=VARCHAR},
+      </if>
+      <if test="procInstId != null">
+        PROC_INST_ID_ = #{procInstId,jdbcType=VARCHAR},
+      </if>
+      <if test="executionId != null">
+        EXECUTION_ID_ = #{executionId,jdbcType=VARCHAR},
+      </if>
+      <if test="taskId != null">
+        TASK_ID_ = #{taskId,jdbcType=VARCHAR},
+      </if>
+      <if test="timeStamp != null">
+        TIME_STAMP_ = #{timeStamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userId != null">
+        USER_ID_ = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="lockOwner != null">
+        LOCK_OWNER_ = #{lockOwner,jdbcType=VARCHAR},
+      </if>
+      <if test="lockTime != null">
+        LOCK_TIME_ = #{lockTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isProcessed != null">
+        IS_PROCESSED_ = #{isProcessed,jdbcType=TINYINT},
+      </if>
+      <if test="data != null">
+        DATA_ = #{data,jdbcType=LONGVARBINARY},
+      </if>
+    </set>
+    where LOG_NR_ = #{logNr,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.trc.model.ActEvtLog">
+    update act_evt_log
+    set TYPE_ = #{type,jdbcType=VARCHAR},
+      PROC_DEF_ID_ = #{procDefId,jdbcType=VARCHAR},
+      PROC_INST_ID_ = #{procInstId,jdbcType=VARCHAR},
+      EXECUTION_ID_ = #{executionId,jdbcType=VARCHAR},
+      TASK_ID_ = #{taskId,jdbcType=VARCHAR},
+      TIME_STAMP_ = #{timeStamp,jdbcType=TIMESTAMP},
+      USER_ID_ = #{userId,jdbcType=VARCHAR},
+      LOCK_OWNER_ = #{lockOwner,jdbcType=VARCHAR},
+      LOCK_TIME_ = #{lockTime,jdbcType=TIMESTAMP},
+      IS_PROCESSED_ = #{isProcessed,jdbcType=TINYINT},
+      DATA_ = #{data,jdbcType=LONGVARBINARY}
+    where LOG_NR_ = #{logNr,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.trc.model.ActEvtLog">
+    update act_evt_log
+    set TYPE_ = #{type,jdbcType=VARCHAR},
+      PROC_DEF_ID_ = #{procDefId,jdbcType=VARCHAR},
+      PROC_INST_ID_ = #{procInstId,jdbcType=VARCHAR},
+      EXECUTION_ID_ = #{executionId,jdbcType=VARCHAR},
+      TASK_ID_ = #{taskId,jdbcType=VARCHAR},
+      TIME_STAMP_ = #{timeStamp,jdbcType=TIMESTAMP},
+      USER_ID_ = #{userId,jdbcType=VARCHAR},
+      LOCK_OWNER_ = #{lockOwner,jdbcType=VARCHAR},
+      LOCK_TIME_ = #{lockTime,jdbcType=TIMESTAMP},
+      IS_PROCESSED_ = #{isProcessed,jdbcType=TINYINT}
+    where LOG_NR_ = #{logNr,jdbcType=BIGINT}
+  </update>
+</mapper>
